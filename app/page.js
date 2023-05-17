@@ -1,94 +1,82 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 
+import Spotify from './components/Spotify'
+import Twitch from './components/Twitch'
+
+import {
+  InstagramIcon,
+  YoutubeIcon,
+  TwitterIcon,
+  SoundcloudIcon,
+  FacebookIcon,
+  SpotifyIcon,
+  BandcampIcon,
+  LinkIcon
+} from './components/Icons'
+
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+      <div className={styles.grid}>
+        <div className={`${styles.item} ${styles.links}`}>
+          <div className={styles.title}>links</div>
+          <a className={styles.link} href="https://instagram.com/phrakture">
+            <InstagramIcon /> instagram.com/phrakture
+          </a>
+          <a className={styles.link} href="https://youtube.com/phrakture">
+            <YoutubeIcon /> youtube.com/phrakture
+          </a>
+          <a className={styles.link} href="https://twitter.com/phrakturemusic">
+            <TwitterIcon /> twitter.com/phrakturemusic
+          </a>
+          <a className={styles.link} href="https://soundcloud.com/phrakture">
+            <SoundcloudIcon /> soundcloud.com/phrakture
+          </a>
+          <a className={styles.link} href="https://www.facebook.com/phrakturemusic/">
+            <FacebookIcon /> facebook.com/phrakturemusic
           </a>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className={`${styles.item} ${styles.discography}`}>
+          <div className={styles.title}>discography</div>
+          <div className={styles.content}>
+            <a className={styles.link} href="https://open.spotify.com/artist/4AlnXoFGT5zl3v85ScIOzK?si=PjI_wsPsTemoD_BiQf8esA">
+              <SpotifyIcon /> spotify
+            </a>
+            <a className={styles.link} href="https://phrakture.bandcamp.com/">
+              <BandcampIcon /> bandcamp
+            </a>
+            <a className={styles.link} href="https://www.beatport.com/artist/phrakture/99726">
+              <LinkIcon /> beatport
+            </a>
+          </div>
+        </div>
+        <div className={`${styles.item} ${styles.packs}`}>
+          <div className={styles.title}>sample packs</div>
+          <div className={styles.content}>
+            <a className={styles.link} href="https://freesound.org/people/Phr4kture/packs">
+              <LinkIcon /> Freesound
+            </a>
+            <a className={styles.link} disabled>
+              (more to come...)
+            </a>
+          </div>
+        </div>
+        <div className={`${styles.item} ${styles.tutorials}`}>
+          <div className={styles.title}>music tutorials</div>
+          <div className={styles.content}>
+            <a className={styles.link} href="https://www.youtube.com/playlist?list=PLJy-2vXnWEZ9QvAj7-4zSyHoOInXiRO4V">
+              <YoutubeIcon /> Music Production
+            </a>
+            <a className={styles.link} href="https://www.youtube.com/playlist?list=PLJy-2vXnWEZ8NURxmSDbTjFtYTYDIxNam">
+              <YoutubeIcon /> AKAI MPKmini
+            </a>
+          </div>
+        </div>
+        <div className={`${styles.embeds}`}>
+          <Spotify className={styles.spotify}/>
+          <Twitch className={styles.twitch}/>
+        </div>
       </div>
     </main>
   )
