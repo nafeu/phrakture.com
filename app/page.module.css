@@ -73,7 +73,8 @@
   justify-content: center;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  gap: calc(var(--default-spacing) / 2);
 }
 
 .header {
@@ -139,11 +140,83 @@
 .announcements {
   width: 100%;
   padding-bottom: calc(var(--default-spacing) / 2);
+  margin-bottom: calc(var(--default-spacing) / 2);
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
   text-transform: uppercase;
   border-bottom: 1px solid white;
+}
+
+.announcementBlocks {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--default-spacing) * 2);
+  padding: var(--default-spacing);
+  height: calc(var(--square-dimensions) * 1.7);
+  overflow-y: scroll;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  gap: var(--default-spacing);
+}
+
+.block:nth-of-type(odd) {
+  flex-direction: row-reverse;
+}
+
+
+.blockImageContainer {
+
+}
+
+.blockImage {
+  border-radius: var(--default-border-radius);
+}
+
+.blockText {
+
+}
+
+.blockText a {
+  text-decoration: underline;
+}
+
+.blockText a:hover {
+  opacity: 0.5;
+}
+
+.blockText a:active {
+  opacity: 0.25;
+}
+
+.blockTitle {
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding-bottom: calc(var(--default-spacing) / 2);
+}
+
+.blockDate {
+  padding-bottom: calc(var(--default-spacing) / 2);
+  opacity: 0.25;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.blockDescription {
+  padding-bottom: calc(var(--default-spacing));
+
+}
+
+.blockCta {
+  background-color: var(--color-primary);
+  display: inline-block;
+  color: var(--color-secondary);
+  font-weight: bold;
+  padding-block: calc(var(--default-spacing) / 4);
+  padding-inline: calc(var(--default-spacing) / 2);
 }
 
 @media (max-width: 1000px) {
@@ -187,13 +260,33 @@
 
   .spotlight {
     width: 90vw;
+    min-height: calc((var(--square-dimensions) * 2) + var(--default-spacing));
+    height: auto;
   }
 
   .about {
     width: 90vw;
+    height: auto;
   }
 
   .footer {
     width: 90vw;
+  }
+
+  .headshotCircle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+  }
+
+  .headshot {
+    flex-direction: column-reverse;
+    padding: 0;
+    padding-top: calc(var(--default-spacing) * 3);
+    padding-bottom: calc(var(--default-spacing) * 2);
+  }
+
+  .bio {
+    padding-bottom: 20px;
   }
 }

@@ -7,6 +7,7 @@ import {
   AlbumIcon,
   BandcampIcon,
   ChalkboardUserIcon,
+  CopyrightIcon,
   DiskIcon,
   FacebookIcon,
   InstagramIcon,
@@ -22,6 +23,8 @@ import {
 import { PhraktureLogo } from './components/Logos'
 
 import headshotImage from '../public/headshot.jpeg'
+
+import { announcements } from './announcements'
 
 export default function Home() {
   return (
@@ -117,10 +120,31 @@ export default function Home() {
         </div>
         <div className={styles.spotlight}>
           <div className={styles.announcements}>Announcements</div>
+          <div className={styles.announcementBlocks}>
+            {announcements.map(({ date, title, image, description, alt, url, cta }) => (
+              <div className={styles.block}>
+                <div className={styles.blockImageContainer}>
+                  <Image
+                    className={styles.blockImage}
+                    src={`/${image}`}
+                    width={150}
+                    height={150}
+                    alt={alt}
+                  />
+                </div>
+                <div className={styles.blockText}>
+                  <div className={styles.blockTitle}>{title}</div>
+                  <div className={styles.blockDate}>{date}</div>
+                  <div className={styles.blockDescription}>{description}</div>
+                  <a href={url} className={styles.blockCta}>{cta}</a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className={styles.footer}>
-        Copyright 2024 Nafeu Nasir - phrakturemusic@proton.me
+        <CopyrightIcon /> 2024 Phrakture - <a href="https://nafeu.com">nafeu.com</a>
       </div>
     </main>
   )
