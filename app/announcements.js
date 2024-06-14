@@ -21,7 +21,7 @@ export const announcements = [
     alt: "Claes Rosen Stellarity Remixes",
     description: (
       <Fragment>
-        Check out my progressive breakbeat remix of Claes Rosen&apos;s Stellarity, out now on all major stores and streaming platforms.
+        Check out my breakbeat remix of Claes Rosen&apos;s Stellarity, out now on all major platforms.
       </Fragment>
     ),
     url: "https://soundcloud.com/springtube/claes-rosen-stellarity-phrakture-remix",
