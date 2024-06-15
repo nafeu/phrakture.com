@@ -260,8 +260,12 @@
 
   .spotlight {
     width: 90vw;
-    min-height: calc((var(--square-dimensions) * 2) + var(--default-spacing));
     height: auto;
+    min-height: calc(var(--square-dimensions) * 3.75);
+  }
+
+  .announcementBlocks {
+    min-height: calc(var(--square-dimensions) * 3);
   }
 
   .about {
