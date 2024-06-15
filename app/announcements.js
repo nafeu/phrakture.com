@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 
 export const announcements = [
   {
+    id: 2,
     date: "June 14th, 2024",
     title: "Lorn's Lure Soundtrack",
     image: "announcement-2.png",
@@ -15,6 +16,7 @@ export const announcements = [
     cta: "View Steam Page"
   },
   {
+    id: 1,
     date: "April 5th, 2024",
     title: "Claes Rosen - Stellarity (Phrakture Remix)",
     image: "announcement-1.png",

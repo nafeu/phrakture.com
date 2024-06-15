@@ -121,8 +121,8 @@ export default function Home() {
         <div className={styles.spotlight}>
           <div className={styles.announcements}>Announcements</div>
           <div className={styles.announcementBlocks}>
-            {announcements.map(({ date, title, image, description, alt, url, cta }) => (
-              <div className={styles.block}>
+            {announcements.map(({ id, date, title, image, description, alt, url, cta }) => (
+              <div key={id} className={styles.block}>
                 <div className={styles.blockImageContainer}>
                   <Image
                     className={styles.blockImage}
