@@ -34,15 +34,20 @@ export default function Home() {
           <div className={styles.header}>download</div>
 
           <div className={styles.linkList}>
+            <a className={styles.link} href="https://phrakture.bandcamp.com/">
+              <BandcampIcon /> bandcamp
+            </a>
             <a className={styles.link} href="https://freesound.org/people/Phrakture">
               <DiskIcon /> freesound
             </a>
+            {/*
             <a className={styles.link} href="https://phrakture.itch.io/">
               <AlbumIcon /> itch.io
             </a>
             <a className={styles.link} href="https://phrakture.gumroad.com">
               <AlbumCollectionIcon /> gumroad
             </a>
+            */}
           </div>
         </div>
         <div className={`${styles.item} ${styles.tutorials}`}>

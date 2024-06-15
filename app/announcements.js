@@ -9,7 +9,7 @@ export const announcements = [
     alt: "Lorn's Lure Cover",
     description: (
       <Fragment>
-        In 2023, I had the pleasure of scoring the entire soundtrack for my friend <a href="https://x.com/_rubeki">Rubeki&apos;s</a> 3d atmospheric parkour platformer <a href="https://store.steampowered.com/app/1417930/Lorns_Lure/">Lorn&apos;s Lure</a>.
+        Over the last year, I&apos;ve had the pleasure of composing soundtrack for my friend <a href="https://x.com/_rubeki">Rubeki&apos;s</a> 3d atmospheric parkour platformer <a href="https://store.steampowered.com/app/1417930/Lorns_Lure/">Lorn&apos;s Lure</a>.
       </Fragment>
     ),
     url: "https://store.steampowered.com/app/1417930/Lorns_Lure/",
