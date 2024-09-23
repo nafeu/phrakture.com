@@ -3,13 +3,13 @@ import { Fragment } from 'react'
 export const announcements = [
   {
     id: 2,
-    date: "June 14th, 2024",
+    date: "September 20th, 2024",
     title: "Lorn's Lure Soundtrack",
     image: "announcement-2.png",
     alt: "Lorn's Lure Cover",
     description: (
       <Fragment>
-        Over the last year, I&apos;ve had the pleasure of composing soundtrack for my friend <a href="https://x.com/_rubeki">Rubeki&apos;s</a> 3d atmospheric parkour platformer <a href="https://store.steampowered.com/app/1417930/Lorns_Lure/">Lorn&apos;s Lure</a>.
+        <a href="https://store.steampowered.com/app/1417930/Lorns_Lure/">Lorn&apos;s Lure</a> is out now! The soundtrack is available on <a href="https://phrakture.bandcamp.com">Bandcamp</a> as well as <a href="https://distrokid.com/hyperfollow/phrakture/lorns-lure-original-soundtrack">Spotify, and all major platforms</a>
       </Fragment>
     ),
     url: "https://store.steampowered.com/app/1417930/Lorns_Lure/",
