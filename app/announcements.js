@@ -2,6 +2,20 @@ import { Fragment } from 'react'
 
 export const announcements = [
   {
+    id: 3,
+    date: "January 20th, 2025",
+    title: "Primordialis Soundtrack + Patreon Launch",
+    image: "announcement-3.png",
+    alt: "Primordialis Logo",
+    description: (
+      <Fragment>
+        I&apos;m excited to announce that I&apos;ve signed on to do the original soundtrack for <a href="https://www.youtube.com/watch?v=m4I9uIV1HvU">Primordialis</a>! In celebration of a wicked year of soundtrack production, I&apos;ve also launched a patreon, <a href="https://patreon.com/phrakture">check it out here.</a>
+      </Fragment>
+    ),
+    url: "https://store.steampowered.com/app/3011360/Primordialis/",
+    cta: "Wishlist Primordialis Now"
+  },
+  {
     id: 2,
     date: "September 20th, 2024",
     title: "Lorn's Lure Soundtrack",

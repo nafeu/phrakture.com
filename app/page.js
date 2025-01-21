@@ -13,6 +13,7 @@ import {
   InstagramIcon,
   LinkIcon,
   MapIcon,
+  PatreonIcon,
   PianoKeyboardIcon,
   SoundcloudIcon,
   SpotifyIcon,
@@ -34,6 +35,9 @@ export default function Home() {
           <div className={styles.header}>download</div>
 
           <div className={styles.linkList}>
+            <a className={styles.link} href="https://patreon.com/phrakture">
+              <PatreonIcon /> patreon
+            </a>
             <a className={styles.link} href="https://phrakture.bandcamp.com/">
               <BandcampIcon /> bandcamp
             </a>
@@ -149,7 +153,7 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.footer}>
-        <CopyrightIcon /> 2024 Phrakture - <a href="https://nafeu.com">nafeu.com</a>
+        <CopyrightIcon /> 2025 Phrakture - <a href="https://nafeu.com">nafeu.com</a>
       </div>
     </main>
   )
