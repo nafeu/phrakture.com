@@ -1,0 +1,161 @@
+.pageTitle {
+  margin-bottom: 10px;
+}
+
+.chordsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  margin-bottom: 20px;
+}
+
+.chordsList::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.scalesList {
+  padding-block: 20px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  margin-bottom: 20px;
+}
+
+.scalesList::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.piano {
+  --key-width: 20px;
+  --key-height: 60px;
+  --key-white: var(--theme-cse-white);
+  --key-black: var(--theme-cse-black);
+  --key-border-radius: 3px;
+  --key-gap: 1px;
+
+  display: flex;
+  gap: var(--key-gap);
+}
+
+.key {
+  width: var(--key-width);
+  height: var(--key-height);
+  background-color: var(--key-white);
+  border-radius: var(--key-border-radius);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: var(--key-black);
+  padding-bottom: var(--key-gap);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 0.8rem;
+  position: relative;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.key:active {
+  background-color: var(--theme-cse-red);
+}
+
+.black {
+  background-color: var(--key-black);
+  margin-inline: calc((var(--key-width) + var(--key-gap)) / 2 * -1);
+  z-index: 10;
+  height: calc(var(--key-height) * 0.75);
+  color: var(--key-white);
+}
+
+.selected {
+  color: var(--key-white);
+}
+
+.selectedChord {
+  background-color: var(--theme-cse-purple);
+}
+
+.selectedScale {
+  background-color: var(--theme-cse-blue);
+}
+
+.selected::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--theme-cse-white);
+  position: absolute;
+  bottom: -15px;
+}
+
+.black::after {
+  bottom: -30px;
+  background-color: var(--theme-cse-black);
+  box-sizing: border-box;
+  border: 1px solid var(--theme-cse-white);
+}
+
+.chart {
+  display: flex;
+  gap: 5px;
+}
+
+.chordChart, .scaleChart {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top-left-radius: 5px;
+  padding: 10px;
+  width: 300px;
+  height: 80px;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.chordChart {
+  color: var(--theme-cse-purple);
+  border-top: 2px solid var(--theme-cse-purple);
+  border-left: 2px solid var(--theme-cse-purple);
+  border-right: none;
+}
+
+.scaleChart {
+  color: var(--theme-cse-blue);
+  border-top: 2px solid var(--theme-cse-blue);
+  border-left: 2px solid var(--theme-cse-blue);
+  border-right: none;
+}
+
+.chartButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.volumeIcon, .downloadIcon {
+  cursor: pointer;
+}
+
+.volumeIcon:active, .downloadIcon:active {
+  fill: var(--theme-cse-red);
+}
+
+.chordIcon {
+  fill: var(--theme-cse-purple);
+}
+
+.scaleIcon {
+  fill: var(--theme-cse-blue);
+}

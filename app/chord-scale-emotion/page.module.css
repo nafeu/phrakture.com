@@ -1,0 +1,6 @@
+.main {
+  background-color: var(--theme-cse-black);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}

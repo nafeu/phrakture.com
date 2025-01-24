@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ChordScaleExplorer from '../components/ChordScaleExplorer'
 
 import styles from './page.module.css'
 
@@ -8,6 +8,8 @@ export const metadata = {
   keywords: ["phrakture", "chord", "scale", "interactive", "midi"]
 }
 
-export default function Soundtrack() {
-  return <h1>Hello World</h1>
+export default function ChordScaleEmotion() {
+  return <div className={styles.main}>
+    <ChordScaleExplorer />
+  </div>
 }
