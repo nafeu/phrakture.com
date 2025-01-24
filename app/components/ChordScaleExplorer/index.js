@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Midi } from "@tonejs/midi";
 import * as Tone from "tone";
-import { CHORD_COLLECTION, SCALES_COLLECTION, NOTES_COLLECTION } from "./constants";
+import { CHORD_COLLECTION, SCALE_COLLECTION, NOTES_COLLECTION, ALL_ROOTS, ALL_TAGS } from "./constants";
 
 import styles from './index.module.css'
 import { FileArrowDownIcon, VolumeHighIcon } from "../Icons";
+import { byUniqueItems } from "./helpers";
 
 let startAudioContext = true;
 
@@ -56,7 +57,37 @@ const Piano = ({ selectedNotes, onNotePreview, chartType }) => {
   )
 }
 
+const DEFAULT_ROOTS = ["C"];
+const DEFAULT_TAGS = ["chord", "major"];
+
 const ChordScaleExplorer = () => {
+  const [selectedTags, setSelectedTags] = useState(DEFAULT_TAGS);
+  const [selectedRoots, setSelectedRoots] = useState(DEFAULT_ROOTS);
+
+  const handleClickRootTag = root => {
+    let updatedRoots = selectedRoots;
+
+    if (updatedRoots.includes(root)) {
+      updatedRoots = updatedRoots.filter(item => item !== root);
+    } else {
+      updatedRoots = [...updatedRoots, root]
+    }
+
+    setSelectedRoots(updatedRoots);
+  }
+
+  const handleClickTag = tag => {
+    let updatedTags = selectedTags;
+
+    if (updatedTags.includes(tag)) {
+      updatedTags = updatedTags.filter(item => item !== tag);
+    } else {
+      updatedTags = [...updatedTags, tag]
+    }
+
+    setSelectedTags(updatedTags);
+  }
+
   const handleNotePreview = async note => {
     if (startAudioContext) {
       await Tone.start();
@@ -127,50 +158,84 @@ const ChordScaleExplorer = () => {
     <div className={styles.chordScaleExplorer}>
       <h1 className={styles.pageTitle}>Phrakture&apos;s Chord & Scale Explorer 🎹</h1>
 
-      <div className={styles.chordsList}>
-        {CHORD_COLLECTION.map(({ name, notes }) => (
-          <div key={name} className={styles.chart}>
-            <div className={styles.chordChart}>
-              <div className={styles.name}>{name}</div>
-              <div className={styles.chartButtons}>
-                <div onMouseDown={() => handleChordPreview(notes)}>
-                  <VolumeHighIcon
-                    className={[styles.volumeIcon, styles.chordIcon].join(' ')}
-                  />
-                </div>
-                <div onClick={() => handleMidiExport({ name: `${name} chord`, notes, type: "chord" })}>
-                  <FileArrowDownIcon
-                    className={[styles.downloadIcon, styles.chordIcon].join(' ')}
-                  />
-                </div>
-              </div>
-            </div>
-            <Piano selectedNotes={notes} onNotePreview={handleNotePreview} chartType="chord" />
+      <div className={[styles.rootSelector]}>
+        {ALL_ROOTS.map(root => (
+          <div
+            key={root}
+            onClick={() => handleClickRootTag(root)}
+            className={[styles.rootTag, selectedRoots.includes(root) ? styles.tagSelected : ''].join(' ')}
+          >
+            {root}
           </div>
         ))}
       </div>
 
-      <div className={styles.scalesList}>
-        {SCALES_COLLECTION.map(({ name, notes }) => (
-          <div key={name} className={styles.chart}>
-            <div className={styles.scaleChart}>
-              <div className={styles.name}>{name}</div>
-              <div className={styles.chartButtons}>
-                <div onMouseDown={() => handleScalePreview(notes)}>
-                  <VolumeHighIcon
-                    className={[styles.volumeIcon, styles.scaleIcon].join(' ')}
-                  />
-                </div>
-                <div onClick={() => handleMidiExport({ name: `${name} scale`, notes, type: "chord" })}>
-                  <FileArrowDownIcon
-                    className={[styles.downloadIcon, styles.scaleIcon].join(' ')}
-                  />
-                </div>
-              </div>
-            </div>
-            <Piano selectedNotes={notes} onNotePreview={handleNotePreview} chartType="scale" />
+      <div className={[styles.tagSelector]}>
+        {ALL_TAGS.map(tag => (
+          <div
+            key={tag}
+            onClick={() => handleClickTag(tag)}
+            className={[styles.tag, selectedTags.includes(tag) ? styles.tagSelected : ''].join(' ')}
+          >
+            {tag}
           </div>
         ))}
+      </div>
+
+      <div className={styles.chordsList}>
+        {CHORD_COLLECTION
+          .filter(({ root }) => selectedRoots.includes(root))
+          // TODO: this logic can't work if chord is not selected, fix this
+          .filter(({ tags }) => selectedTags.includes('chord') && tags.filter(item => selectedTags.includes(item)).length > 1)
+          .map(({ root, name, notes }) => (
+            <div key={`${root} ${name}`} className={styles.chart}>
+              <div className={styles.chordChart}>
+                <div className={styles.name}><span className={styles.chordRoot}>{root}</span>{' '}{name}</div>
+                <div className={styles.chartButtons}>
+                  <div onMouseDown={() => handleChordPreview(notes)}>
+                    <VolumeHighIcon
+                      className={[styles.volumeIcon, styles.chordIcon].join(' ')}
+                    />
+                  </div>
+                  <div onClick={() => handleMidiExport({ name: `${name} chord`, notes, type: "chord" })}>
+                    <FileArrowDownIcon
+                      className={[styles.downloadIcon, styles.chordIcon].join(' ')}
+                    />
+                  </div>
+                </div>
+              </div>
+              <Piano selectedNotes={notes} onNotePreview={handleNotePreview} chartType="chord" />
+            </div>
+          )
+        )}
+      </div>
+
+      <div className={styles.scalesList}>
+        {SCALE_COLLECTION
+          .filter(({ root }) => selectedRoots.includes(root))
+          // TODO: this logic can't work if chord is not selected, fix this
+          .filter(({ tags }) => selectedTags.includes('scale') && tags.filter(item => selectedTags.includes(item)).length > 1)
+          .map(({ root, name, notes }) => (
+            <div key={`${root} ${name}`} className={styles.chart}>
+              <div className={styles.scaleChart}>
+                <div className={styles.name}><span className={styles.scaleRoot}>{root}</span>{' '}{name}</div>
+                <div className={styles.chartButtons}>
+                  <div onMouseDown={() => handleScalePreview(notes)}>
+                    <VolumeHighIcon
+                      className={[styles.volumeIcon, styles.scaleIcon].join(' ')}
+                    />
+                  </div>
+                  <div onClick={() => handleMidiExport({ name: `${name} scale`, notes, type: "chord" })}>
+                    <FileArrowDownIcon
+                      className={[styles.downloadIcon, styles.scaleIcon].join(' ')}
+                    />
+                  </div>
+                </div>
+              </div>
+              <Piano selectedNotes={notes} onNotePreview={handleNotePreview} chartType="scale" />
+            </div>
+          )
+        )}
       </div>
     </div>
   );

@@ -123,13 +123,17 @@
 .name {
   font-size: 1.25rem;
   font-weight: bold;
+  color: var(--theme-cse-white);
 }
 
 .chordChart {
-  color: var(--theme-cse-purple);
   border-top: 2px solid var(--theme-cse-purple);
   border-left: 2px solid var(--theme-cse-purple);
   border-right: none;
+}
+
+.chordRoot {
+  color: var(--theme-cse-purple);
 }
 
 .scaleChart {
@@ -137,6 +141,10 @@
   border-top: 2px solid var(--theme-cse-blue);
   border-left: 2px solid var(--theme-cse-blue);
   border-right: none;
+}
+
+.scaleRoot {
+  color: var(--theme-cse-blue);
 }
 
 .chartButtons {
@@ -158,4 +166,30 @@
 
 .scaleIcon {
   fill: var(--theme-cse-blue);
+}
+
+.tagSelector, .rootSelector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1cqmax;
+}
+
+.tag, .rootTag {
+  padding-block: 5px;
+  padding-inline: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.25;
+}
+
+.tag:hover, .rootTag:hover {
+  opacity: 1;
+}
+
+.tagSelected {
+  background-color: white;
+  color: black;
+  opacity: 1;
 }
