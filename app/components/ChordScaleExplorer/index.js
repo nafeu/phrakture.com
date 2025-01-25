@@ -1,7 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import { Midi } from '@tonejs/midi';
+import React, { useState, useEffect } from 'react';
+
+import { FileArrowDownIcon, VolumeHighIcon } from '../Icons';
+
 import {
   CHORD_COLLECTION,
   SCALE_COLLECTION,
@@ -15,9 +18,7 @@ import {
   DEFAULT_MIDI_BPM,
   DEFAULT_MIDI_LENGTH,
 } from './constants';
-
 import styles from './index.module.css';
-import { FileArrowDownIcon, VolumeHighIcon } from '../Icons';
 
 let startAudioContext = true;
 

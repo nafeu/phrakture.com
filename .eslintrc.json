@@ -1,9 +1,46 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "plugin:prettier/recommended"
+    "next/core-web-vitals",                // Next.js-specific linting rules, including Core Web Vitals
+    "eslint:recommended",                  // Basic recommended ESLint rules
+    "plugin:prettier/recommended"          // Integrates Prettier with ESLint
+  ],
+  "plugins": [
+    "import",                              // Helps with import/export rules
+    "react-hooks"                          // Enforces React hooks rules
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",          // Treat Prettier issues as errors
+    "react/react-in-jsx-scope": "off",     // Not needed in Next.js (React is globally available)
+    "react/jsx-props-no-spreading": "off", // Allow spreading props (e.g., for HOCs or components)
+    "react-hooks/rules-of-hooks": "error", // Enforce hook rules
+    "react-hooks/exhaustive-deps": "warn", // Warn about missing dependencies in hooks
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/newline-after-import": "error", // Enforce a newline after import statements
+    "no-console": [
+      "warn",
+      { "allow": ["warn", "error"] }        // Warn on `console.log`, allow `console.warn` and `console.error`
+    ],
+    "no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_" }         // Ignore unused variables that start with "_"
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],                   // Resolve imports from the `src` directory
+        "extensions": [".js", ".jsx"]
+      }
+    }
   }
 }
