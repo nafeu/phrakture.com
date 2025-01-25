@@ -8,6 +8,12 @@ import {
   NOTES_COLLECTION,
   ALL_ROOTS,
   ALL_TAGS,
+  DEFAULT_TAGS,
+  DEFAULT_ROOTS,
+  DEFAULT_SELECTOR_DISPLAY,
+  DEFAULT_TAG_FILTER_OPTION,
+  DEFAULT_MIDI_BPM,
+  DEFAULT_MIDI_LENGTH,
 } from './constants';
 
 import styles from './index.module.css';
@@ -75,12 +81,6 @@ const Piano = ({ selectedNotes, onNotePreview, chartType }) => {
   );
 };
 
-const DEFAULT_ROOTS = ['C'];
-const DEFAULT_TAGS = [];
-const DEFAULT_SELECTOR_DISPLAY = 'chords';
-const DEFAULT_TAG_FILTER_OPTION = 'or';
-const DEFAULT_MIDI_BPM = 120;
-
 const ChordScaleExplorer = () => {
   useEffect(() => {
     const initTone = async () => {
@@ -100,6 +100,7 @@ const ChordScaleExplorer = () => {
   );
   const [tagFilter, setTagFilter] = useState('');
   const [midiBpm, setMidiBpm] = useState(DEFAULT_MIDI_BPM);
+  const [midiLength, setMidiLength] = useState(DEFAULT_MIDI_LENGTH);
 
   const handleChangeTagFilter = ({ target: { value } }) => setTagFilter(value);
 

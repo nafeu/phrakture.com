@@ -1,5 +1,18 @@
 const transposeNote = (note, steps) => {
-  const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+  const notes = [
+    'C',
+    'C#',
+    'D',
+    'D#',
+    'E',
+    'F',
+    'F#',
+    'G',
+    'G#',
+    'A',
+    'A#',
+    'B',
+  ];
   const octave = parseInt(note.slice(-1));
   const noteBase = note.slice(0, -1);
   const noteIndex = notes.indexOf(noteBase);
@@ -24,8 +37,21 @@ const transposeChord = (chord, steps) => {
 };
 
 export const generateAllChords = (baseChords, roots) => {
-  const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-  const baseIndex = notes.indexOf("C");
+  const notes = [
+    'C',
+    'C#',
+    'D',
+    'D#',
+    'E',
+    'F',
+    'F#',
+    'G',
+    'G#',
+    'A',
+    'A#',
+    'B',
+  ];
+  const baseIndex = notes.indexOf('C');
 
   const allChords = [];
 
@@ -44,4 +70,5 @@ export const generateAllChords = (baseChords, roots) => {
   return allChords;
 };
 
-export const byUniqueItems = (value, index, array) => array.indexOf(value) === index;
+export const byUniqueItems = (value, index, array) =>
+  array.indexOf(value) === index;
