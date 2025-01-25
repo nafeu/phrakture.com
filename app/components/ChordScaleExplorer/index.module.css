@@ -336,20 +336,20 @@
   text-transform: uppercase;
   font-size: 0.9rem;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
   color: var(--theme-cse-red);
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 5px;
-  align-items: center;
-  justify-content: center;
 }
 
 .midiExportOptionLength {
   display: flex;
   gap: 10px;
-  border-right: 2px solid var(--theme-cse-red);
-  padding-right: 10px;
+  border-left: 2px solid var(--theme-cse-red);
+  padding-left: 10px;
   align-items: center;
 }
 
@@ -358,30 +358,26 @@
   background-color: var(--theme-cse-red);
   color: var(--theme-cse-black);
   border-radius: 5px;
-  padding: 5px;
+  padding: 6px;
   font-weight: bold;
-  text-align: center;
-}
-
-.midiExportOptionLength > input {
-  width: 30px;
-}
-
-.midiExportOptionTempo > input {
-  width: 40px;
+  text-align: left;
+  width: 60px;
 }
 
 .midiExportOptionTempo {
   display: flex;
   gap: 10px;
-  border-right: 2px solid var(--theme-cse-red);
-  padding-right: 10px;
+  border-left: 2px solid var(--theme-cse-red);
+  padding-left: 10px;
   align-items: center;
 }
 
 .midiExportOptionSequence {
   display: flex;
   gap: 10px;
+  align-items: center;
+  border-left: 2px solid var(--theme-cse-red);
+  padding-left: 10px;
 }
 
 .midiExportOptionTitle {
@@ -390,12 +386,32 @@
 
 .midiExportOptionLabel {
   font-weight: bold;
+  width: 80px;
 }
 
 .midiExportSequenceOption {
+  opacity: 0.5;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--theme-cse-red);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 60px;
+  text-align: center;
+}
 
+.midiExportSequenceOption:hover {
+  opacity: 1.0;
 }
 
 .midiExportMeasurementLabel {
 
+}
+
+.midiExportSequenceSelected {
+  background-color: var(--theme-cse-red);
+  color: var(--theme-cse-black);
+  opacity: 1.0;
 }

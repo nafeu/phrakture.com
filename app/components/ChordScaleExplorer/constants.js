@@ -449,3 +449,4 @@ export const DEFAULT_SELECTOR_DISPLAY = 'chords';
 export const DEFAULT_TAG_FILTER_OPTION = 'or';
 export const DEFAULT_MIDI_BPM = 120;
 export const DEFAULT_MIDI_LENGTH = 4;
+export const DEFAULT_MIDI_SEQUENCE = 'chord';

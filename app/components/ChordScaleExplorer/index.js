@@ -17,7 +17,9 @@ import {
   DEFAULT_TAG_FILTER_OPTION,
   DEFAULT_MIDI_BPM,
   DEFAULT_MIDI_LENGTH,
+  DEFAULT_MIDI_SEQUENCE,
 } from './constants';
+import { getMidiFileName } from './helpers';
 import styles from './index.module.css';
 
 let startAudioContext = true;
@@ -102,6 +104,15 @@ const ChordScaleExplorer = () => {
   const [tagFilter, setTagFilter] = useState('');
   const [midiBpm, setMidiBpm] = useState(DEFAULT_MIDI_BPM);
   const [midiLength, setMidiLength] = useState(DEFAULT_MIDI_LENGTH);
+  const [midiSequence, setMidiSequence] = useState(DEFAULT_MIDI_SEQUENCE);
+
+  const handleChangeMidiBpm = ({ target: { value } }) =>
+    setMidiBpm(Math.max(1, value));
+
+  const handleChangeMidiLength = ({ target: { value } }) =>
+    setMidiLength(Math.max(1, value));
+
+  const handleClickMidiSequence = (sequence) => setMidiSequence(sequence);
 
   const handleChangeTagFilter = ({ target: { value } }) => setTagFilter(value);
 
@@ -163,28 +174,34 @@ const ChordScaleExplorer = () => {
     });
   };
 
-  const handleMidiExport = ({ name, notes, type }) => {
+  const handleMidiExport = ({ name, notes }) => {
     const midi = new Midi();
     const track = midi.addTrack();
 
-    if (type === 'chord') {
+    midi.header.setTempo(midiBpm);
+
+    const secondsPerBeat = 60 / midiBpm;
+    const totalDuration = midiLength * 4 * secondsPerBeat;
+
+    if (midiSequence === 'chord') {
       notes.forEach((note) => {
         track.addNote({
           name: note,
           time: 0,
-          duration: 1,
+          duration: totalDuration,
         });
       });
-    } else if (type === 'scale') {
+    } else if (midiSequence === 'steps') {
       let currentTime = 0;
+      const noteDuration = secondsPerBeat / 4;
 
       notes.forEach((note) => {
         track.addNote({
           name: note,
           time: currentTime,
-          duration: 0.5,
+          duration: noteDuration,
         });
-        currentTime += 0.5;
+        currentTime += noteDuration;
       });
     }
 
@@ -367,27 +384,57 @@ const ChordScaleExplorer = () => {
               </div>
             ))}
           </div>
-        </div>
-        <div className={styles.chartsSection}>
-          <div className={styles.resultsSummary}>{summary}</div>
           <div className={styles.midiExportOptions}>
             <div className={styles.midiExportOptionTitle}>MIDI Options</div>
             <div className={styles.midiExportOptionLength}>
               <div className={styles.midiExportOptionLabel}>Length</div>
-              <input type="number" value={4} />
+              <input
+                type="number"
+                value={midiLength}
+                min={1}
+                onChange={handleChangeMidiLength}
+              />
               <div className={styles.midiExportMeasurementLabel}>Bars</div>
             </div>
             <div className={styles.midiExportOptionTempo}>
               <div className={styles.midiExportOptionLabel}>Tempo</div>
-              <input type="number" value={120} />
+              <input
+                type="number"
+                value={midiBpm}
+                min={1}
+                onChange={handleChangeMidiBpm}
+              />
               <div className={styles.midiExportMeasurementLabel}>BPM</div>
             </div>
             <div className={styles.midiExportOptionSequence}>
               <div className={styles.midiExportOptionLabel}>Sequence As</div>
-              <div className={styles.midiExportSequenceOption}>Chord</div>
-              <div className={styles.midiExportSequenceOption}>Steps</div>
+              <div
+                className={[
+                  styles.midiExportSequenceOption,
+                  midiSequence === 'chord'
+                    ? styles.midiExportSequenceSelected
+                    : '',
+                ].join(' ')}
+                onClick={() => handleClickMidiSequence('chord')}
+              >
+                Chord
+              </div>
+              <div
+                className={[
+                  styles.midiExportSequenceOption,
+                  midiSequence === 'steps'
+                    ? styles.midiExportSequenceSelected
+                    : '',
+                ].join(' ')}
+                onClick={() => handleClickMidiSequence('steps')}
+              >
+                Steps
+              </div>
             </div>
           </div>
+        </div>
+        <div className={styles.chartsSection}>
+          <div className={styles.resultsSummary}>{summary}</div>
           <div
             className={[
               styles.chordsList,
@@ -415,9 +462,8 @@ const ChordScaleExplorer = () => {
                       title="Export Midi File"
                       onClick={() =>
                         handleMidiExport({
-                          name: `${name} chord`,
+                          name: getMidiFileName({ root, name, type: 'chord' }),
                           notes,
-                          type: 'chord',
                         })
                       }
                     >
@@ -455,9 +501,8 @@ const ChordScaleExplorer = () => {
                     <div
                       onClick={() =>
                         handleMidiExport({
-                          name: `${name} scale`,
+                          name: getMidiFileName({ root, name, type: 'scale' }),
                           notes,
-                          type: 'chord',
                         })
                       }
                     >

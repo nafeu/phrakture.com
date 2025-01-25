@@ -72,3 +72,14 @@ export const generateAllChords = (baseChords, roots) => {
 
 export const byUniqueItems = (value, index, array) =>
   array.indexOf(value) === index;
+
+export const snakeCase = (input) => {
+  return input
+    .replace(/([a-z])([A-Z])/g, '$1_$2')
+    .replace(/\s+/g, '_')
+    .replace(/-/g, '_')
+    .toLowerCase();
+};
+
+export const getMidiFileName = ({ root, name, type }) =>
+  snakeCase(`${root} ${name} ${type} phrakture cse`);
