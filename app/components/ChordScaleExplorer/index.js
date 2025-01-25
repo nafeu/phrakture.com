@@ -67,8 +67,9 @@ const Piano = ({ selectedNotes, onNotePreview, chartType }) => {
 
 const DEFAULT_ROOTS = ["C"];
 const DEFAULT_TAGS = [];
-const DEFAULT_SELECTOR_DISPLAY = "chords"
-const DEFAULT_TAG_FILTER_OPTION = "or"
+const DEFAULT_SELECTOR_DISPLAY = "chords";
+const DEFAULT_TAG_FILTER_OPTION = "or";
+const DEFAULT_MIDI_BPM = 120;
 
 const ChordScaleExplorer = () => {
   useEffect(() => {
@@ -84,6 +85,7 @@ const ChordScaleExplorer = () => {
   const [selectorDisplay, setSelectorDisplay] = useState(DEFAULT_SELECTOR_DISPLAY);
   const [selectedTagFilterOption, setSelectedTagFilterOption] = useState(DEFAULT_TAG_FILTER_OPTION);
   const [tagFilter, setTagFilter] = useState('');
+  const [midiBpm, setMidiBpm] = useState(DEFAULT_MIDI_BPM);
 
   const handleChangeTagFilter = ({ target: { value } }) => setTagFilter(value);
 
@@ -298,6 +300,24 @@ const ChordScaleExplorer = () => {
         </div>
         <div className={styles.chartsSection}>
           <div className={styles.resultsSummary}>{summary}</div>
+          <div className={styles.midiExportOptions}>
+            <div className={styles.midiExportOptionTitle}>MIDI Options</div>
+            <div className={styles.midiExportOptionLength}>
+              <div className={styles.midiExportOptionLabel}>Length</div>
+              <input type="number" value={4} />
+              <div className={styles.midiExportMeasurementLabel}>Bars</div>
+            </div>
+            <div className={styles.midiExportOptionTempo}>
+              <div className={styles.midiExportOptionLabel}>Tempo</div>
+              <input type="number" value={120} />
+              <div className={styles.midiExportMeasurementLabel}>BPM</div>
+            </div>
+            <div className={styles.midiExportOptionSequence}>
+              <div className={styles.midiExportOptionLabel}>Sequence As</div>
+              <div className={styles.midiExportSequenceOption}>Chord</div>
+              <div className={styles.midiExportSequenceOption}>Steps</div>
+            </div>
+          </div>
           <div className={[styles.chordsList, hasChordCharts ? styles.chartsGap : ''].join(' ')}>
             {filteredChordCharts.map(({ root, name, notes }) => (
               <div key={`${root} ${name}`} className={styles.chart}>

@@ -331,3 +331,71 @@
   margin-bottom: 10px;
   font-weight: bold;
 }
+
+.midiExportOptions {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 10px;
+  color: var(--theme-cse-red);
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.midiExportOptionLength {
+  display: flex;
+  gap: 10px;
+  border-right: 2px solid var(--theme-cse-red);
+  padding-right: 10px;
+  align-items: center;
+}
+
+.midiExportOptionLength > input, .midiExportOptionTempo > input {
+  border: none;
+  background-color: var(--theme-cse-red);
+  color: var(--theme-cse-black);
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.midiExportOptionLength > input {
+  width: 30px;
+}
+
+.midiExportOptionTempo > input {
+  width: 40px;
+}
+
+.midiExportOptionTempo {
+  display: flex;
+  gap: 10px;
+  border-right: 2px solid var(--theme-cse-red);
+  padding-right: 10px;
+  align-items: center;
+}
+
+.midiExportOptionSequence {
+  display: flex;
+  gap: 10px;
+}
+
+.midiExportOptionTitle {
+  color: var(--theme-cse-white);
+}
+
+.midiExportOptionLabel {
+  font-weight: bold;
+}
+
+.midiExportSequenceOption {
+
+}
+
+.midiExportMeasurementLabel {
+
+}
