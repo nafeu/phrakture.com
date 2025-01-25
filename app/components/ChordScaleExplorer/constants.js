@@ -75,7 +75,7 @@ const BASE_SCALE_COLLECTION = [
   { root: "C", name: "Egyptian", tags: ["ancient", "mystical", "open", "hypnotic"], notes: ["C4", "D4", "F4", "G4", "A4"] },
   { root: "C", name: "Balinese", tags: ["ethnic", "mystical", "island", "peaceful"], notes: ["C4", "D4", "D#4", "G4", "A#4"] },
   { root: "C", name: "Indian Bhairav", tags: ["indian", "spiritual", "serious", "mystical"], notes: ["C4", "C#4", "E4", "F4", "G4", "G#4", "A#4"] },
-  { root: "C", name: "Flamenco", tags: ["passionate", "Spanish", "dramatic", "fiery"], notes: ["C4", "C#4", "E4", "F4", "G4", "G#4", "A4"] }
+  { root: "C", name: "Flamenco", tags: ["passionate", "spanish", "dramatic", "fiery"], notes: ["C4", "C#4", "E4", "F4", "G4", "G#4", "A4"] }
 ];
 
 export const SCALE_COLLECTION = [...BASE_SCALE_COLLECTION, ...generateAllChords(BASE_SCALE_COLLECTION, REMAINING_ROOTS)];
@@ -95,7 +95,7 @@ export const ALL_TAGS = (() => {
     })
   });
 
-  output = output.filter(byUniqueItems);
+  output = output.filter(byUniqueItems).sort();
 
   return output;
 })();

@@ -47,23 +47,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-* {
-  scrollbar-width: auto;
-  scrollbar-color: var(--color-primary) var(--color-secondary);
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--color-secondary);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary);
-  border-radius: 10px;
-  border: 3px none var(--color-primary);
-}
