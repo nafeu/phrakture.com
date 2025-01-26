@@ -5,8 +5,7 @@
     "plugin:prettier/recommended"          // Integrates Prettier with ESLint
   ],
   "plugins": [
-    "import",                              // Helps with import/export rules
-    "react-hooks"                          // Enforces React hooks rules
+    "import"                              // Helps with import/export rules
   ],
   "rules": {
     "prettier/prettier": "error",          // Treat Prettier issues as errors

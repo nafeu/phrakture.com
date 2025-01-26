@@ -1,3 +1,5 @@
+import { ENHARMONIC_LOOKUP } from './constants';
+
 const transposeNote = (note, steps) => {
   const notes = [
     'C',
@@ -83,3 +85,6 @@ export const snakeCase = (input) => {
 
 export const getMidiFileName = ({ root, name, type }) =>
   snakeCase(`${root} ${name} ${type} phrakture cse`);
+
+export const formatNote = ({ note, enharmonic = 'sharp' }) =>
+  (enharmonic !== 'sharp' && ENHARMONIC_LOOKUP[note]) || note;

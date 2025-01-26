@@ -1,6 +1,7 @@
 'use client';
 
 import { Midi } from '@tonejs/midi';
+import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 
 import { FileArrowDownIcon, VolumeHighIcon } from '../Icons';
@@ -18,8 +19,9 @@ import {
   DEFAULT_MIDI_BPM,
   DEFAULT_MIDI_LENGTH,
   DEFAULT_MIDI_SEQUENCE,
+  DEFAULT_ENHARMONIC,
 } from './constants';
-import { getMidiFileName } from './helpers';
+import { getMidiFileName, formatNote } from './helpers';
 import styles from './index.module.css';
 
 let startAudioContext = true;
@@ -51,7 +53,7 @@ const initializeAudioContext = async () => {
   startAudioContext = false;
 };
 
-const Piano = ({ selectedNotes, onNotePreview, chartType }) => {
+const Piano = ({ selectedNotes, onNotePreview, chartType, enharmonic }) => {
   const selectedNotesWithoutOctave = selectedNotes.map((note) =>
     note.replace(/[0-9]/g, ''),
   );
@@ -77,7 +79,9 @@ const Piano = ({ selectedNotes, onNotePreview, chartType }) => {
             rootNote === note ? styles.rootNote : '',
           ].join(' ')}
         >
-          <div className={styles.keyName}>{note}</div>
+          <div className={styles.keyName}>
+            {formatNote({ note, enharmonic })}
+          </div>
         </div>
       ))}
     </div>
@@ -93,18 +97,102 @@ const ChordScaleExplorer = () => {
     initTone();
   }, []);
 
-  const [selectedTags, setSelectedTags] = useState(DEFAULT_TAGS);
-  const [selectedRoots, setSelectedRoots] = useState(DEFAULT_ROOTS);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [selectedTags, setSelectedTags] = useState(
+    searchParams.get('selectedTags')?.split(',') || DEFAULT_TAGS,
+  );
+  const [selectedRoots, setSelectedRoots] = useState(
+    searchParams.get('selectedRoots')?.split(',') || DEFAULT_ROOTS,
+  );
   const [selectorDisplay, setSelectorDisplay] = useState(
-    DEFAULT_SELECTOR_DISPLAY,
+    searchParams.get('selectorDisplay') || DEFAULT_SELECTOR_DISPLAY,
   );
   const [selectedTagFilterOption, setSelectedTagFilterOption] = useState(
-    DEFAULT_TAG_FILTER_OPTION,
+    searchParams.get('selectedTagFilterOption') || DEFAULT_TAG_FILTER_OPTION,
   );
-  const [tagFilter, setTagFilter] = useState('');
-  const [midiBpm, setMidiBpm] = useState(DEFAULT_MIDI_BPM);
-  const [midiLength, setMidiLength] = useState(DEFAULT_MIDI_LENGTH);
-  const [midiSequence, setMidiSequence] = useState(DEFAULT_MIDI_SEQUENCE);
+  const [tagFilter, setTagFilter] = useState(
+    searchParams.get('tagFilter') || '',
+  );
+  const [midiBpm, setMidiBpm] = useState(
+    parseInt(searchParams.get('midiBpm')) || DEFAULT_MIDI_BPM,
+  );
+  const [midiLength, setMidiLength] = useState(
+    parseInt(searchParams.get('midiLength')) || DEFAULT_MIDI_LENGTH,
+  );
+  const [midiSequence, setMidiSequence] = useState(
+    searchParams.get('midiSequence') || DEFAULT_MIDI_SEQUENCE,
+  );
+  const [enharmonic, setEnharmonic] = useState(
+    searchParams.get('enharmonic') || DEFAULT_ENHARMONIC,
+  );
+
+  const updateURL = () => {
+    const params = new URLSearchParams();
+
+    if (selectedTags.join(',') !== DEFAULT_TAGS.join(',')) {
+      params.set('selectedTags', selectedTags.join(','));
+    }
+    if (selectedRoots.join(',') !== DEFAULT_ROOTS.join(',')) {
+      params.set('selectedRoots', selectedRoots.join(','));
+    }
+    if (selectorDisplay !== DEFAULT_SELECTOR_DISPLAY) {
+      params.set('selectorDisplay', selectorDisplay);
+    }
+    if (selectedTagFilterOption !== DEFAULT_TAG_FILTER_OPTION) {
+      params.set('selectedTagFilterOption', selectedTagFilterOption);
+    }
+    if (tagFilter !== '') {
+      params.set('tagFilter', tagFilter);
+    }
+    if (midiBpm !== DEFAULT_MIDI_BPM) {
+      params.set('midiBpm', midiBpm.toString());
+    }
+    if (midiLength !== DEFAULT_MIDI_LENGTH) {
+      params.set('midiLength', midiLength.toString());
+    }
+    if (midiSequence !== DEFAULT_MIDI_SEQUENCE) {
+      params.set('midiSequence', midiSequence);
+    }
+    if (enharmonic !== DEFAULT_ENHARMONIC) {
+      params.set('enharmonic', enharmonic);
+    }
+
+    const newQueryString = params.toString();
+    router.push(`chord-scale-explorer?${newQueryString}`, { shallow: true });
+  };
+
+  useEffect(updateURL, [
+    selectedTags,
+    selectedRoots,
+    selectorDisplay,
+    selectedTagFilterOption,
+    tagFilter,
+    midiBpm,
+    midiLength,
+    midiSequence,
+    updateURL,
+  ]);
+
+  const handleClickResetAll = () => {
+    setSelectedTags(DEFAULT_TAGS);
+    setSelectedRoots(DEFAULT_ROOTS);
+    setSelectorDisplay(DEFAULT_SELECTOR_DISPLAY);
+    setSelectedTagFilterOption(DEFAULT_TAG_FILTER_OPTION);
+    setTagFilter('');
+    setMidiBpm(DEFAULT_MIDI_BPM);
+    setMidiLength(DEFAULT_MIDI_LENGTH);
+    setMidiSequence(DEFAULT_MIDI_SEQUENCE);
+    setEnharmonic(DEFAULT_ENHARMONIC);
+  };
+
+  const handleClickClearRoots = () => setSelectedRoots([]);
+
+  const handleClickClearTags = () => setSelectedTags([]);
+
+  const handleClickEnharmonic = (updatedEnharmonic) =>
+    setEnharmonic(updatedEnharmonic);
 
   const handleChangeMidiBpm = ({ target: { value } }) =>
     setMidiBpm(Math.max(1, value));
@@ -323,6 +411,14 @@ const ChordScaleExplorer = () => {
             >
               Show Both
             </div>
+            <div
+              className={[styles.displayOption, styles.resetAllButton].join(
+                ' ',
+              )}
+              onClick={handleClickResetAll}
+            >
+              Reset All
+            </div>
           </div>
           <div className={styles.selectorTitle}>Select Roots</div>
           <div className={styles.rootSelector}>
@@ -335,9 +431,33 @@ const ChordScaleExplorer = () => {
                   selectedRoots.includes(root) ? styles.tagSelectedRoot : '',
                 ].join(' ')}
               >
-                {root}
+                {formatNote({ note: root, enharmonic })}
               </div>
             ))}
+            <div
+              className={[
+                styles.enharmonicOption,
+                enharmonic === 'sharp' ? styles.selectedEnharmonic : '',
+              ].join(' ')}
+              onClick={() => handleClickEnharmonic('sharp')}
+            >
+              &ldquo;sharp&rdquo;
+            </div>
+            <div
+              className={[
+                styles.enharmonicOption,
+                enharmonic === 'flat' ? styles.selectedEnharmonic : '',
+              ].join(' ')}
+              onClick={() => handleClickEnharmonic('flat')}
+            >
+              &ldquo;flat&rdquo;
+            </div>
+            <div
+              className={styles.rootClearOption}
+              onClick={handleClickClearRoots}
+            >
+              Clear Roots
+            </div>
           </div>
           <div className={styles.selectorTitle}>Select Tags</div>
           <div className={styles.tagFilterOptions}>
@@ -356,7 +476,7 @@ const ChordScaleExplorer = () => {
                   : '',
               ].join(' ')}
             >
-              &quot;and&ldquo;
+              &ldquo;and&rdquo;
             </div>
             <div
               onClick={() => handleClickTagFilterOption('or')}
@@ -367,7 +487,13 @@ const ChordScaleExplorer = () => {
                   : '',
               ].join(' ')}
             >
-              &quot;or&ldquo;
+              &ldquo;or&rdquo;
+            </div>
+            <div
+              className={styles.tagFilterOption}
+              onClick={handleClickClearTags}
+            >
+              Clear Tags
             </div>
           </div>
           <div className={styles.tagSelector}>
@@ -445,7 +571,10 @@ const ChordScaleExplorer = () => {
               <div key={`${root} ${name}`} className={styles.chart}>
                 <div className={styles.chordChart}>
                   <div className={styles.name}>
-                    <span className={styles.chordRoot}>{root}</span> {name}
+                    <span className={styles.chordRoot}>
+                      {formatNote({ note: root, enharmonic })}
+                    </span>{' '}
+                    {name}
                   </div>
                   <div className={styles.chartButtons}>
                     <div
@@ -462,7 +591,11 @@ const ChordScaleExplorer = () => {
                       title="Export Midi File"
                       onClick={() =>
                         handleMidiExport({
-                          name: getMidiFileName({ root, name, type: 'chord' }),
+                          name: getMidiFileName({
+                            root: formatNote({ note: root, enharmonic }),
+                            name,
+                            type: 'chord',
+                          }),
                           notes,
                         })
                       }
@@ -479,6 +612,7 @@ const ChordScaleExplorer = () => {
                   selectedNotes={notes}
                   onNotePreview={handleNotePreview}
                   chartType="chord"
+                  enharmonic={enharmonic}
                 />
               </div>
             ))}
@@ -488,7 +622,10 @@ const ChordScaleExplorer = () => {
               <div key={`${root} ${name}`} className={styles.chart}>
                 <div className={styles.scaleChart}>
                   <div className={styles.name}>
-                    <span className={styles.scaleRoot}>{root}</span> {name}
+                    <span className={styles.scaleRoot}>
+                      {formatNote({ note: root, enharmonic })}
+                    </span>{' '}
+                    {name}
                   </div>
                   <div className={styles.chartButtons}>
                     <div onMouseDown={() => handleScalePreview(notes)}>
@@ -501,7 +638,11 @@ const ChordScaleExplorer = () => {
                     <div
                       onClick={() =>
                         handleMidiExport({
-                          name: getMidiFileName({ root, name, type: 'scale' }),
+                          name: getMidiFileName({
+                            root: formatNote({ note: root, enharmonic }),
+                            name,
+                            type: 'scale',
+                          }),
                           notes,
                         })
                       }
