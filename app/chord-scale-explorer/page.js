@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import ChordScaleExplorer from '../components/ChordScaleExplorer';
 import { CopyrightIcon } from '../components/Icons';
 
@@ -10,21 +12,6 @@ export const metadata = {
   },
   description: `Explore chords & scales through tags and export MIDI`,
   keywords: ['phrakture', 'chord', 'scale', 'interactive', 'midi'],
-  openGraph: {
-    title: "Phrakture's Chord & Scale Explorer",
-    description: 'Explore chords & scales through tags and export MIDI',
-    images: [
-      {
-        url: '/cse-opengraph-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'phrakture chord scale explorer',
-      },
-    ],
-    siteName: 'phrakture.com',
-    locale: 'en_CA',
-    type: 'website',
-  },
 };
 
 export default function ChordScaleExplorerPage() {
