@@ -1,10 +1,9 @@
 import Image from 'next/image';
 
-import styles from './page.module.css';
+import headshotImage from '../public/headshot.jpeg';
 
+import { announcements } from './announcements';
 import {
-  AlbumCollectionIcon,
-  AlbumIcon,
   BandcampIcon,
   ChalkboardUserIcon,
   CopyrightIcon,
@@ -20,12 +19,8 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from './components/Icons';
-
 import { PhraktureLogo } from './components/Logos';
-
-import headshotImage from '../public/headshot.jpeg';
-
-import { announcements } from './announcements';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
