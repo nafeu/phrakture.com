@@ -39,7 +39,7 @@ export default function ChordScaleExplorerPage() {
         <a href="https://phrakture.com">phrakture.com</a>{' '}
         <a href="https://nafeu.com">nafeu.com</a>{' '}
         <a href="mailto:phrakturemusic@proton.me?subject=Chord%20Scale%20Explorer%20Feedback">
-          Send Feedback or Report an Issue
+          Send Feedback
         </a>
       </div>
     </div>

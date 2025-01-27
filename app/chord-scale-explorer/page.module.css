@@ -39,6 +39,8 @@
   padding: 10px;
   z-index: 100;
   color: var(--theme-cse-white);
+  background-color: var(--theme-cse-black);
+  border-radius: 5px;
 }
 
 .footer a, .footer span {
