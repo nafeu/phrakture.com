@@ -10,6 +10,22 @@ export const metadata = {
   },
   description: `Explore chords & scales through tags and export MIDI`,
   keywords: ['phrakture', 'chord', 'scale', 'interactive', 'midi'],
+  openGraph: {
+    title: "Phrakture's Chord & Scale Explorer",
+    description: 'Explore chords & scales through tags and export MIDI',
+    url: 'https://phrakture.com/chord-scale-explorer',
+    siteName: 'phrakture.com',
+    images: [
+      {
+        url: 'https://phrakture.com/chord-scale-explorer/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'phrakture chord scale explorer',
+      },
+    ],
+    locale: 'en_CA',
+    type: 'website',
+  },
 };
 
 export default function ChordScaleExplorerPage() {
