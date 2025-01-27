@@ -222,7 +222,7 @@ export const VolumeHighIcon = ({ className }) => (
   </svg>
 );
 
-export const FileArrowDownIcon = ({ className, onClick }) => (
+export const FileArrowDownIcon = ({ className }) => (
   // Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
   <svg
     className={className}

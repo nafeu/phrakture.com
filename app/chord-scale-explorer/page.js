@@ -1,3 +1,5 @@
+import { Fragment, Suspense } from 'react';
+
 import ChordScaleExplorer from '../components/ChordScaleExplorer';
 import { CopyrightIcon } from '../components/Icons';
 
@@ -28,10 +30,14 @@ export const metadata = {
   },
 };
 
+const ChordScaleExplorerFallback = () => <Fragment>loading...</Fragment>;
+
 export default function ChordScaleExplorerPage() {
   return (
     <div className={styles.main}>
-      <ChordScaleExplorer />
+      <Suspense fallback={<ChordScaleExplorerFallback />}>
+        <ChordScaleExplorer />
+      </Suspense>
       <div className={styles.footer}>
         <span>
           <CopyrightIcon /> 2025
