@@ -186,12 +186,13 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 10px;
+  padding-bottom: 10px;
   align-content: flex-start;
 }
 
 .tagSelector {
-  height: 60vh;
-  overflow-y: scroll;;
+  height: 30vh;
+  overflow-y: scroll;
   border-bottom: 2px solid var(--theme-cse-white);
 }
 
@@ -345,13 +346,22 @@
 }
 
 .resultsSummary {
-  background-color: var(--theme-cse-white);
-  color: var(--theme-cse-black);
+  background-color: var(--theme-cse-black);
+  color: var(--theme-cse-white);
+  border: 1px solid var(--theme-cse-white);
   padding-block: 5px;
-  padding-inline: 10px;
+  padding-inline: 5px;
   border-radius: 5px;
   margin-bottom: 10px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summaryText {
+  padding: 5px;
+  font-size: 1.25rem;
 }
 
 .midiExportOptions {
@@ -436,4 +446,48 @@
   background-color: var(--theme-cse-red);
   color: var(--theme-cse-black);
   opacity: 1.0;
+}
+
+.supportLinks {
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.supportLink {
+  background-color: var(--theme-cse-white);
+  color: var(--theme-cse-black);
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.supportLink:hover {
+  opacity: 0.5;
+}
+
+.supportLink:active {
+  opacity: 0.25;
+}
+
+.titleChord {
+  color: var(--theme-cse-purple);
+}
+
+.titleScale {
+  color: var(--theme-cse-blue);
+}
+
+.shareLink {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.shareLink:hover {
+  opacity: 1;
 }

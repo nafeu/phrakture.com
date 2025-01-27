@@ -1,5 +1,4 @@
 import './globals.css';
-import backgroundImage from '../public/background.png';
 
 export const metadata = {
   title: 'Phrakture | Music, Sample Packs, Soundtrack and More',

@@ -53,6 +53,26 @@ const initializeAudioContext = async () => {
   startAudioContext = false;
 };
 
+const CopyToClipboard = ({ text, children, copiedText = 'Copied!' }) => {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 1500);
+    });
+  };
+
+  return (
+    <span
+      onClick={handleCopy}
+      style={{ cursor: 'pointer', display: 'inline-block' }}
+    >
+      {isCopied ? copiedText : children}
+    </span>
+  );
+};
+
 const Piano = ({ selectedNotes, onNotePreview, chartType, enharmonic }) => {
   const selectedNotesWithoutOctave = selectedNotes.map((note) =>
     note.replace(/[0-9]/g, ''),
@@ -375,7 +395,8 @@ const ChordScaleExplorer = () => {
   return (
     <div className={styles.chordScaleExplorer}>
       <h1 className={styles.pageTitle}>
-        Phrakture&apos;s Chord & Scale Explorer 🎹
+        Phrakture&apos;s <span className={styles.titleChord}>Chord</span> &{' '}
+        <span className={styles.titleScale}>Scale</span> Explorer 🎹
       </h1>
       <div className={styles.widget}>
         <div className={styles.selectorsSection}>
@@ -560,7 +581,28 @@ const ChordScaleExplorer = () => {
           </div>
         </div>
         <div className={styles.chartsSection}>
-          <div className={styles.resultsSummary}>{summary}</div>
+          <div className={styles.resultsSummary}>
+            <div className={styles.summaryText}>
+              {summary}{' '}
+              <CopyToClipboard text={window.location.href}>
+                <span className={styles.shareLink}>Share This List</span>
+              </CopyToClipboard>
+            </div>
+            <div className={styles.supportLinks}>
+              <a
+                className={styles.supportLink}
+                href="https://www.patreon.com/phrakture"
+              >
+                ❤️ Support on Patreon
+              </a>
+              <a
+                className={styles.supportLink}
+                href="https://buymeacoffee.com/nafeunasir"
+              >
+                ☕️ Buy Me A Coffee
+              </a>
+            </div>
+          </div>
           <div
             className={[
               styles.chordsList,

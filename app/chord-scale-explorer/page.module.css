@@ -26,3 +26,35 @@
   border-radius: 10px;
   border: 3px none var(--theme-cse-white);
 }
+
+.footer {
+  text-transform: uppercase;
+  font-weight: bold;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: auto;
+  padding: 10px;
+  z-index: 100;
+  color: var(--theme-cse-white);
+}
+
+.footer a, .footer span {
+  opacity: 0.5;
+}
+
+.footer a {
+  padding-inline: 5px;
+  padding-right: 10px;
+  border-right: 1px solid var(--theme-cse-white);
+}
+
+.footer a:last-child {
+  border: none;
+}
+
+.footer a:hover {
+  opacity: 1;
+}
