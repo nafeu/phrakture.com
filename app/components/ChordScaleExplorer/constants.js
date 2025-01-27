@@ -577,7 +577,10 @@ const BASE_CHORD_COLLECTION = [
 export const CHORD_COLLECTION = [
   ...BASE_CHORD_COLLECTION,
   ...generateAllChords(BASE_CHORD_COLLECTION, REMAINING_ROOTS),
-];
+].map((chord, index) => ({
+  ...chord,
+  id: `c${index}`,
+}));
 
 const BASE_SCALE_COLLECTION = [
   {
@@ -1061,7 +1064,10 @@ const BASE_SCALE_COLLECTION = [
 export const SCALE_COLLECTION = [
   ...BASE_SCALE_COLLECTION,
   ...generateAllChords(BASE_SCALE_COLLECTION, REMAINING_ROOTS),
-];
+].map((scale, index) => ({
+  ...scale,
+  id: `s${index}`,
+}));
 
 export const ALL_TAGS = (() => {
   let output = [];

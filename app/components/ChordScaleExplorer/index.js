@@ -3,7 +3,7 @@
 import { Midi } from '@tonejs/midi';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { FileArrowDownIcon, VolumeHighIcon } from '../Icons';
 
@@ -74,7 +74,13 @@ const CopyToClipboard = ({ text, children, copiedText = 'Copied!' }) => {
   );
 };
 
-const Piano = ({ selectedNotes, onNotePreview, chartType, enharmonic }) => {
+const Piano = ({
+  selectedNotes,
+  onNotePreview,
+  chartType,
+  enharmonic,
+  isPlaying,
+}) => {
   const selectedNotesWithoutOctave = selectedNotes.map((note) =>
     note.replace(/[0-9]/g, ''),
   );
@@ -87,24 +93,31 @@ const Piano = ({ selectedNotes, onNotePreview, chartType, enharmonic }) => {
 
   return (
     <div className={styles.piano}>
-      {NOTES_COLLECTION.map(({ note, isBlack, preview }) => (
-        <div
-          key={note}
-          onMouseDown={() => onNotePreview(preview)}
-          className={[
-            styles.key,
-            isBlack ? styles.black : '',
-            selectedNotesWithoutOctave?.includes(note)
-              ? [selectedClassBychartType[chartType], styles.selected].join(' ')
-              : '',
-            rootNote === note ? styles.rootNote : '',
-          ].join(' ')}
-        >
-          <div className={styles.keyName}>
-            {formatNote({ note, enharmonic })}
+      {NOTES_COLLECTION.map(({ note, isBlack, preview }) => {
+        const isChartedNote = selectedNotesWithoutOctave?.includes(note);
+
+        return (
+          <div
+            key={note}
+            onMouseDown={() => onNotePreview(preview)}
+            className={[
+              styles.key,
+              isBlack ? styles.black : '',
+              isChartedNote
+                ? [selectedClassBychartType[chartType], styles.selected].join(
+                    ' ',
+                  )
+                : '',
+              rootNote === note ? styles.rootNote : '',
+              isChartedNote && isPlaying ? styles.isPlaying : '',
+            ].join(' ')}
+          >
+            <div className={styles.keyName}>
+              {formatNote({ note, enharmonic })}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
@@ -148,6 +161,22 @@ const ChordScaleExplorer = () => {
   const [enharmonic, setEnharmonic] = useState(
     searchParams.get('enharmonic') || DEFAULT_ENHARMONIC,
   );
+
+  const [chartPlayingIds, setChartPlayingIds] = useState(null);
+  const timeoutRef = useRef(null);
+
+  const indicateChartPlaying = (id) => {
+    setChartPlayingIds((currentIds) => [...(currentIds || []), id]);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      setChartPlayingIds(null);
+      timeoutRef.current = null;
+    }, 1000);
+  };
 
   const updateURL = () => {
     const params = new URLSearchParams();
@@ -263,7 +292,9 @@ const ChordScaleExplorer = () => {
     noteSynth.triggerAttackRelease(note, '8n');
   };
 
-  const handleChordPreview = async (notes) => {
+  const handleChordPreview = async ({ notes, id }) => {
+    indicateChartPlaying(id);
+
     if (startAudioContext) {
       await initializeAudioContext();
     }
@@ -271,7 +302,9 @@ const ChordScaleExplorer = () => {
     chordSynth.triggerAttackRelease(notes, '2n');
   };
 
-  const handleScalePreview = async (notes) => {
+  const handleScalePreview = async ({ notes, id }) => {
+    indicateChartPlaying(id);
+
     if (startAudioContext) {
       await initializeAudioContext();
     }
@@ -612,7 +645,7 @@ const ChordScaleExplorer = () => {
               hasChordCharts ? styles.chartsGap : '',
             ].join(' ')}
           >
-            {filteredChordCharts.map(({ root, name, notes }) => (
+            {filteredChordCharts.map(({ root, name, notes, id }) => (
               <div key={`${root} ${name}`} className={styles.chart}>
                 <div className={styles.chordChart}>
                   <div className={styles.name}>
@@ -624,7 +657,7 @@ const ChordScaleExplorer = () => {
                   <div className={styles.chartButtons}>
                     <div
                       title="Preview Chord"
-                      onMouseDown={() => handleChordPreview(notes)}
+                      onMouseDown={() => handleChordPreview({ notes, id })}
                     >
                       <VolumeHighIcon
                         className={[styles.volumeIcon, styles.chordIcon].join(
@@ -658,12 +691,13 @@ const ChordScaleExplorer = () => {
                   onNotePreview={handleNotePreview}
                   chartType="chord"
                   enharmonic={enharmonic}
+                  isPlaying={chartPlayingIds?.includes(id)}
                 />
               </div>
             ))}
           </div>
           <div className={styles.scalesList}>
-            {filteredScaleCharts.map(({ root, name, notes }) => (
+            {filteredScaleCharts.map(({ root, name, notes, id }) => (
               <div key={`${root} ${name}`} className={styles.chart}>
                 <div className={styles.scaleChart}>
                   <div className={styles.name}>
@@ -673,7 +707,7 @@ const ChordScaleExplorer = () => {
                     {name}
                   </div>
                   <div className={styles.chartButtons}>
-                    <div onMouseDown={() => handleScalePreview(notes)}>
+                    <div onMouseDown={() => handleScalePreview({ notes, id })}>
                       <VolumeHighIcon
                         className={[styles.volumeIcon, styles.scaleIcon].join(
                           ' ',
@@ -704,6 +738,8 @@ const ChordScaleExplorer = () => {
                   selectedNotes={notes}
                   onNotePreview={handleNotePreview}
                   chartType="scale"
+                  enharmonic={enharmonic}
+                  isPlaying={chartPlayingIds?.includes(id)}
                 />
               </div>
             ))}

@@ -94,6 +94,10 @@
   z-index: 10;
 }
 
+.isPlaying {
+  background-color: var(--theme-cse-red);
+}
+
 .selected::after {
   content: "";
   width: 10px;
