@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import ChordScaleExplorer from '../components/ChordScaleExplorer';
 import { CopyrightIcon } from '../components/Icons';
 

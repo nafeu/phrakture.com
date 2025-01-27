@@ -2,6 +2,7 @@
 
 import { Midi } from '@tonejs/midi';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import React, { useState, useEffect } from 'react';
 
 import { FileArrowDownIcon, VolumeHighIcon } from '../Icons';
@@ -584,7 +585,9 @@ const ChordScaleExplorer = () => {
           <div className={styles.resultsSummary}>
             <div className={styles.summaryText}>
               {summary}{' '}
-              <CopyToClipboard text={window.location.href}>
+              <CopyToClipboard
+                text={typeof window !== 'undefined' ? window.location.href : ''}
+              >
                 <span className={styles.shareLink}>Share This List</span>
               </CopyToClipboard>
             </div>
@@ -707,6 +710,7 @@ const ChordScaleExplorer = () => {
           </div>
         </div>
       </div>
+      <GoogleAnalytics trackPageViews />
     </div>
   );
 };
