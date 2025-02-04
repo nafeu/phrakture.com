@@ -22,7 +22,7 @@ const convertToCSV = (data) => {
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const format = searchParams.get('format');
-  const roots = searchParams.get('all');
+  const roots = searchParams.get('roots');
 
   let chordScaleData = DATA.filter(({ root }) => root === 'C');
 
