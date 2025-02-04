@@ -645,14 +645,22 @@ const ChordScaleExplorer = () => {
               hasChordCharts ? styles.chartsGap : '',
             ].join(' ')}
           >
-            {filteredChordCharts.map(({ root, name, notes, id }) => (
+            {filteredChordCharts.map(({ root, name, notes, id, tags }) => (
               <div key={`${root} ${name}`} className={styles.chart}>
                 <div className={styles.chordChart}>
                   <div className={styles.name}>
-                    <span className={styles.chordRoot}>
-                      {formatNote({ note: root, enharmonic })}
-                    </span>{' '}
-                    {name}
+                    <div>
+                      <span className={styles.chordRoot}>
+                        {formatNote({ note: root, enharmonic })}
+                      </span>{' '}
+                      {name}
+                    </div>
+                    <div className={styles.matchedTag}>
+                      {tags
+                        .filter((tag) => selectedTags.includes(tag))
+                        .join(', ')
+                        .trimEnd()}
+                    </div>
                   </div>
                   <div className={styles.chartButtons}>
                     <div
@@ -697,14 +705,22 @@ const ChordScaleExplorer = () => {
             ))}
           </div>
           <div className={styles.scalesList}>
-            {filteredScaleCharts.map(({ root, name, notes, id }) => (
+            {filteredScaleCharts.map(({ root, name, notes, id, tags }) => (
               <div key={`${root} ${name}`} className={styles.chart}>
                 <div className={styles.scaleChart}>
                   <div className={styles.name}>
-                    <span className={styles.scaleRoot}>
-                      {formatNote({ note: root, enharmonic })}
-                    </span>{' '}
-                    {name}
+                    <div>
+                      <span className={styles.scaleRoot}>
+                        {formatNote({ note: root, enharmonic })}
+                      </span>{' '}
+                      {name}
+                    </div>
+                    <div className={styles.matchedTag}>
+                      {tags
+                        .filter((tag) => selectedTags.includes(tag))
+                        .join(', ')
+                        .trimEnd()}
+                    </div>
                   </div>
                   <div className={styles.chartButtons}>
                     <div onMouseDown={() => handleScalePreview({ notes, id })}>

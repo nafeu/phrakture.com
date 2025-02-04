@@ -579,6 +579,7 @@ export const CHORD_COLLECTION = [
   ...generateAllChords(BASE_CHORD_COLLECTION, REMAINING_ROOTS),
 ].map((chord, index) => ({
   ...chord,
+  type: 'chord',
   id: `c${index}`,
 }));
 
@@ -639,7 +640,6 @@ const BASE_SCALE_COLLECTION = [
       'seductive',
       'sultry',
       'sexy',
-      'erotic',
       'alluring',
       'enchanting',
       'hypnotic',
@@ -665,6 +665,23 @@ const BASE_SCALE_COLLECTION = [
       'dramatic',
     ],
     notes: ['C4', 'C#4', 'D#4', 'F4', 'G4', 'G#4', 'A#4'],
+  },
+  {
+    root: 'C',
+    name: 'Phrygian Dominant',
+    tags: [
+      'exotic',
+      'tense',
+      'dramatic',
+      'powerful',
+      'intimidating',
+      'ominous',
+      'menacing',
+      'dramatic',
+      'intense',
+      'passionate',
+    ],
+    notes: ['C4', 'C#4', 'E4', 'F4', 'G4', 'G#4', 'A#4'],
   },
   {
     root: 'C',
@@ -1066,6 +1083,7 @@ export const SCALE_COLLECTION = [
   ...generateAllChords(BASE_SCALE_COLLECTION, REMAINING_ROOTS),
 ].map((scale, index) => ({
   ...scale,
+  type: 'scale',
   id: `s${index}`,
 }));
 
