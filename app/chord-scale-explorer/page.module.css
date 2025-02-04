@@ -60,3 +60,28 @@
 .footer a:hover {
   opacity: 1;
 }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .main {
+    height: auto;
+  }
+
+  .footer {
+    font-size: 0.75rem;
+    border-top: 1px solid var(--theme-cse-white);
+    text-transform: uppercase;
+    font-weight: bold;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    z-index: 100;
+    color: var(--theme-cse-white);
+    background-color: var(--theme-cse-black);
+    border-radius: 0px;
+  }
+}

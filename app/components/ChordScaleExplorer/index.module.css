@@ -360,7 +360,7 @@
   padding-block: 5px;
   padding-inline: 5px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
@@ -507,4 +507,134 @@
   background-color: var(--theme-cse-white);
   border-radius: 2.5px;
   padding-inline: 2.5px;
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+  /* Add your styles here for extra large screens */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+  /* Add your styles here for large screens */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  /* Add your styles here for medium screens */
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .pageTitle {
+    font-size: 1rem;
+  }
+
+  .widget {
+    flex-direction: column;
+  }
+
+  .tagSelector {
+    height: 100px;
+  }
+
+  .selectorTitle {
+    font-size: 1rem;
+    padding-bottom: 2px;
+  }
+
+  .tag,
+  .rootTag,
+  .displayOption,
+  .displayOptionChords,
+  .displayOptionScales,
+  .enharmonicOption,
+  .rootClearOption,
+  .tagClearOption,
+  .tagFilterOption {
+    padding: 2px;
+    border: 1px solid var(--theme-cse-white);
+    border-radius: 0px;
+    cursor: pointer;
+    opacity: 0.25;
+    user-select: none;
+  }
+
+  .displayOptionChords {
+    border: 1px solid var(--theme-cse-purple);
+    color: var(--theme-cse-purple);
+  }
+
+  .displayOptionScales {
+    border: 1px solid var(--theme-cse-blue);
+    color: var(--theme-cse-blue);
+  }
+
+  .tag:hover,
+  .rootTag:hover,
+  .displayOption:hover,
+  .displayOptionChords:hover,
+  .displayOptionScales:hover,
+  .enharmonicOption:hover,
+  .rootClearOption:hover,
+  .tagClearOption:hover,
+  .tagFilterOption:hover {
+    opacity: 1;
+  }
+
+  .rootClearOption:active {
+    background-color: var(--theme-cse-white);
+    color: var(--theme-cse-black);
+  }
+
+  .tagClearOption:active {
+    background-color: var(--theme-cse-white);
+    color: var(--theme-cse-black);
+  }
+
+  .tagFilterOption:active {
+    background-color: var(--theme-cse-white);
+    color: var(--theme-cse-black);
+  }
+
+  .tagSelected,
+  .tagSelectedRoot,
+  .selectedDisplay,
+  .selectedDisplayChords,
+  .selectedDisplayScales,
+  .selectedEnharmonic,
+  .selectedTagFilterOption {
+    background-color: var(--theme-cse-white);
+    color: var(--theme-cse-black);
+    opacity: 1;
+  }
+
+  .tagSelectedRoot {
+    background-color: var(--theme-cse-white);
+    color: var(--theme-cse-black);
+    border: 1px solid var(--theme-cse-white);
+  }
+
+  .selectedDisplayChords {
+    background-color: var(--theme-cse-purple);
+    color: var(--theme-cse-black);
+  }
+
+  .selectedDisplayScales {
+    background-color: var(--theme-cse-blue);
+    color: var(--theme-cse-black);
+  }
+
+  .midiExportOptions {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    color: var(--theme-cse-red);
+    padding: 0px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
 }
