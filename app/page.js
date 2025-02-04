@@ -16,7 +16,7 @@ import {
   PianoKeyboardIcon,
   SoundcloudIcon,
   SpotifyIcon,
-  TwitterIcon,
+  BlueskyIcon,
   YoutubeIcon,
 } from './components/Icons';
 import { PhraktureLogo } from './components/Logos';
@@ -53,17 +53,14 @@ export default function Home() {
           </div>
         </div>
         <div className={`${styles.item} ${styles.tutorials}`}>
-          <div className={styles.header}>watch</div>
+          <div className={styles.header}>create</div>
 
           <div className={styles.linkList}>
+            <a className={styles.link} href="/chord-scale-explorer">
+              <PianoKeyboardIcon /> chord & scale
+            </a>
             <a className={styles.link} href="https://www.youtube.com/phrakture">
               <ChalkboardUserIcon /> tutorials
-            </a>
-            <a
-              className={styles.link}
-              href="https://www.youtube.com/playlist?list=PLJy-2vXnWEZ8UPSP0Wk-cJskPRqeX_u7a"
-            >
-              <PianoKeyboardIcon /> performances
             </a>
             <a className={styles.link} href="https://www.youtube.com/phrakture">
               <MapIcon /> walkthroughs
@@ -103,9 +100,9 @@ export default function Home() {
             </a>
             <a
               className={styles.link}
-              href="https://twitter.com/phrakturemusic"
+              href="https://bsky.app/profile/phrakture.bsky.social"
             >
-              <TwitterIcon /> twitter
+              <BlueskyIcon /> bluesky
             </a>
             <a className={styles.link} href="https://instagram.com/phrakture">
               <InstagramIcon /> instagram

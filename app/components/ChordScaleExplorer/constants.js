@@ -633,6 +633,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Dorian',
     tags: [
+      'dorian',
       'jazzy',
       'mysterious',
       'groovy',
@@ -690,6 +691,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Lydian',
     tags: [
+      'lydian',
       'dreamy',
       'ethereal',
       'hopeful',
@@ -709,6 +711,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Mixolydian',
     tags: [
+      'mixolydian',
       'bluesy',
       'funky',
       'energetic',
@@ -728,6 +731,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Locrian',
     tags: [
+      'locrian',
       'dissonant',
       'dark',
       'unsettling',
@@ -747,6 +751,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Harmonic Minor',
     tags: [
+      'harmonic',
       'minor',
       'dramatic',
       'intense',
@@ -766,6 +771,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Melodic Minor',
     tags: [
+      'melodic',
       'minor',
       'sophisticated',
       'complex',
@@ -842,6 +848,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Whole Tone',
     tags: [
+      'whole',
       'abstract',
       'floating',
       'ambiguous',
@@ -861,6 +868,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Chromatic',
     tags: [
+      'chromatic',
       'all-encompassing',
       'neutral',
       'versatile',
@@ -893,6 +901,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Hungarian Minor',
     tags: [
+      'hungarian',
       'minor',
       'dramatic',
       'exotic',
@@ -950,6 +959,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Arabian',
     tags: [
+      'arabian',
       'mystical',
       'ancient',
       'exotic',
@@ -969,6 +979,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Japanese (In Sen)',
     tags: [
+      'japanese',
       'world',
       'serene',
       'focused',
@@ -988,6 +999,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Persian',
     tags: [
+      'persian',
       'exotic',
       'middle-eastern',
       'dramatic',
@@ -1007,6 +1019,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Egyptian',
     tags: [
+      'egyptian',
       'ancient',
       'mystical',
       'open',
@@ -1026,6 +1039,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Balinese',
     tags: [
+      'balinese',
       'ethnic',
       'mystical',
       'island',
@@ -1064,6 +1078,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Flamenco',
     tags: [
+      'flamenco',
       'passionate',
       'spanish',
       'dramatic',
