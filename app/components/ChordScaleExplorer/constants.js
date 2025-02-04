@@ -651,6 +651,7 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Phrygian',
     tags: [
+      'phrygian',
       'exotic',
       'tense',
       'mystical',
@@ -670,6 +671,8 @@ const BASE_SCALE_COLLECTION = [
     root: 'C',
     name: 'Phrygian Dominant',
     tags: [
+      'phrygian',
+      'dominant',
       'exotic',
       'tense',
       'dramatic',
