@@ -509,6 +509,19 @@
   padding-inline: 2.5px;
 }
 
+.walkthroughLink {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: var(--theme-cse-white);
+  color: var(--theme-cse-black);
+  opacity: 0.2;
+}
+
+.walkthroughLink:hover {
+  opacity: 0.5;
+}
+
 /* Extra large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {
   /* Add your styles here for extra large screens */

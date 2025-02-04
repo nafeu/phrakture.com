@@ -617,12 +617,22 @@ const ChordScaleExplorer = () => {
         <div className={styles.chartsSection}>
           <div className={styles.resultsSummary}>
             <div className={styles.summaryText}>
-              {summary}{' '}
-              <CopyToClipboard
-                text={typeof window !== 'undefined' ? window.location.href : ''}
+              <div>
+                {summary}{' '}
+                <CopyToClipboard
+                  text={
+                    typeof window !== 'undefined' ? window.location.href : ''
+                  }
+                >
+                  <span className={styles.shareLink}>Share This List</span>
+                </CopyToClipboard>
+              </div>
+              <a
+                className={styles.walkthroughLink}
+                href="https://www.youtube.com/watch?v=oH2u60XFL30"
               >
-                <span className={styles.shareLink}>Share This List</span>
-              </CopyToClipboard>
+                Watch A Walkthrough Video
+              </a>
             </div>
             <div className={styles.supportLinks}>
               <a
