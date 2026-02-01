@@ -1,0 +1,46 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.leftColumn {
+  overflow-y: auto;
+  padding: var(--default-spacing, 20px);
+}
+
+.rightColumn {
+  background-color: var(--color-secondary, rgba(0, 0, 0, 0.95));
+  border-left: 1px solid var(--color-primary, white);
+}
+
+.stickyContent {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: var(--default-spacing, 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section {
+  min-height: 60vh;
+  padding-bottom: var(--default-spacing, 20px);
+}
+
+.section h2 {
+  font-size: var(--header-font-size, 2rem);
+  margin-bottom: var(--default-spacing, 10px);
+}
+
+.stickyContent h2 {
+  font-size: var(--header-font-size, 2rem);
+  margin-bottom: var(--default-spacing, 10px);
+}
+
+.stickyContent p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
