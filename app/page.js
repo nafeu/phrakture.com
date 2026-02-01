@@ -16,7 +16,7 @@ import {
   PianoKeyboardIcon,
   SoundcloudIcon,
   SpotifyIcon,
-  BlueskyIcon,
+  XIcon,
   YoutubeIcon,
 } from './components/Icons';
 import { PhraktureLogo } from './components/Logos';
@@ -100,9 +100,9 @@ export default function Home() {
             </a>
             <a
               className={styles.link}
-              href="https://bsky.app/profile/phrakture.bsky.social"
+              href="https://x.com/phrakturemusic"
             >
-              <BlueskyIcon /> bluesky
+              <XIcon /> twitter
             </a>
             <a className={styles.link} href="https://instagram.com/phrakture">
               <InstagramIcon /> instagram
