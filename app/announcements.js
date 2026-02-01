@@ -2,6 +2,22 @@ import { Fragment } from 'react';
 
 export const announcements = [
   {
+    id: 4,
+    date: 'Feb 1st, 2026',
+    title: 'Primordialis Soundtrack Is Out Now!',
+    image: 'announcement-4.png',
+    alt: 'Primordialis Soundtrack Cover',
+    description: (
+      <Fragment>
+        The full OST for Primordialis is now available on all platforms!{' '}
+        You can stream it <a href="https://www.youtube.com/watch?v=m4I9uIV1HvU">here.</a>{' '}
+        We have also put the game and soundtrack together in a discounted bundle on Steam.{' '}
+      </Fragment>
+    ),
+    url: 'https://store.steampowered.com/bundle/64662/Primordialis__Soundtrack/',
+    cta: 'View Bundle On Steam',
+  },
+  {
     id: 3,
     date: 'January 20th, 2025',
     title: 'Primordialis Soundtrack + Patreon Launch',
