@@ -1,9 +1,9 @@
 export default function IntroLeftContent() {
   return (
     <>
-      <h2>Intro</h2>
+      <h2>Hey There!</h2>
       <p className="lead">
-        Hey there! My name is Nafeu and I want to help you craft the OST that
+        My name is Nafeu and I want to help you craft the OST that
         your game deserves.
       </p>
       <p>

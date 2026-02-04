@@ -4,6 +4,7 @@
   --st-text: #f8f4e3;
   --st-accent-1: #e5446d;
   --st-accent-2: #ff8966;
+  --st-black: black;
 
   background-color: var(--st-bg);
   color: var(--st-text);
@@ -12,33 +13,31 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 60% 40%;
   height: 100vh;
   overflow: hidden;
 }
 
 .leftColumn {
   overflow-y: auto;
-  padding: var(--default-spacing, 20px);
+  padding: 2.5rem;
 }
 
 .rightColumn {
-  background-color: var(--st-bg-secondary);
-  border-left: 1px solid var(--st-text);
+  background-color: var(--st-black);
 }
 
 .stickyContent {
   position: sticky;
   top: 0;
   height: 100vh;
-  padding: var(--default-spacing, 20px);
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .section {
-  min-height: 60vh;
   padding-bottom: var(--default-spacing, 20px);
 }
 
@@ -65,18 +64,15 @@
 
 .section p {
   margin-bottom: 1rem;
-  line-height: 1.65;
 }
 
 .section :global(.lead) {
   font-size: 1.35rem;
-  line-height: 1.5;
 }
 
 .section ul {
   margin: 0 0 1rem 0;
   padding-left: 1.5rem;
-  line-height: 1.65;
 }
 
 .section ul li {
@@ -156,5 +152,4 @@
 
 .stickyContent p {
   font-size: 1.25rem;
-  line-height: 1.6;
 }
