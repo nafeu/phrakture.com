@@ -1,3 +1,15 @@
+.themeWrapper {
+  --st-bg: #2a2b2a;
+  --st-bg-secondary: #706c61;
+  --st-text: #f8f4e3;
+  --st-accent-1: #e5446d;
+  --st-accent-2: #ff8966;
+
+  background-color: var(--st-bg);
+  color: var(--st-text);
+  min-height: 100vh;
+}
+
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -11,8 +23,8 @@
 }
 
 .rightColumn {
-  background-color: var(--color-secondary, rgba(0, 0, 0, 0.95));
-  border-left: 1px solid var(--color-primary, white);
+  background-color: var(--st-bg-secondary);
+  border-left: 1px solid var(--st-text);
 }
 
 .stickyContent {
@@ -33,6 +45,108 @@
 .section h2 {
   font-size: var(--header-font-size, 2rem);
   margin-bottom: var(--default-spacing, 10px);
+  color: var(--st-text);
+}
+
+.section h3 {
+  font-size: 1.35rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--st-accent-2);
+}
+
+.section h4 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  color: var(--st-accent-1);
+}
+
+.section p {
+  margin-bottom: 1rem;
+  line-height: 1.65;
+}
+
+.section :global(.lead) {
+  font-size: 1.35rem;
+  line-height: 1.5;
+}
+
+.section ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+  line-height: 1.65;
+}
+
+.section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.section :global(.gameLinks) li {
+  margin-bottom: 0.75rem;
+}
+
+.section a {
+  color: var(--st-accent-1);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.section a:hover {
+  color: var(--st-accent-2);
+  text-decoration: underline;
+}
+
+.section :global(.package) {
+  background: rgba(112, 108, 97, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--st-accent-1);
+}
+
+.section :global(.package) h3 {
+  margin-top: 0;
+}
+
+.section :global(.badge) {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--st-accent-2);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.section :global(.price) {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--st-accent-1);
+}
+
+.section :global(.note) {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+.section :global(.genreList) {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section :global(.genreList) li::before {
+  content: '•';
+  color: var(--st-accent-2);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.section :global(.commitments) li {
+  margin-bottom: 0.75rem;
 }
 
 .stickyContent h2 {

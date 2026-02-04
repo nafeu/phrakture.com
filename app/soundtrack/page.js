@@ -37,6 +37,7 @@ export default function SoundtrackPage() {
   const RightContent = activeSectionData.RightContent;
 
   return (
+    <div className={styles.themeWrapper}>
     <div className={styles.layout}>
       <div ref={containerRef} className={styles.leftColumn}>
         {SECTIONS.map(({ id, LeftContent }) => (
@@ -55,6 +56,7 @@ export default function SoundtrackPage() {
           <RightContent />
         </div>
       </div>
+    </div>
     </div>
   );
 }
