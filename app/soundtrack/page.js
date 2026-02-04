@@ -1,14 +1,40 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SECTIONS } from './sections';
 import styles from './page.module.css';
+
+function ChevronUpIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  );
+}
+
+function ChevronDownIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
 
 export default function SoundtrackPage() {
   const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
   const sectionRefs = useRef({});
   const containerRef = useRef(null);
+
+  const currentIndex = SECTIONS.findIndex((s) => s.id === activeSection);
+
+  const scrollToSection = useCallback((index) => {
+    const clamped = Math.max(0, Math.min(index, SECTIONS.length - 1));
+    const section = sectionRefs.current[SECTIONS[clamped].id];
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -33,6 +59,20 @@ export default function SoundtrackPage() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        scrollToSection(currentIndex + 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        scrollToSection(currentIndex - 1);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentIndex, scrollToSection]);
+
   const activeSectionData = SECTIONS.find((s) => s.id === activeSection) ?? SECTIONS[0];
   const RightContent = activeSectionData.RightContent;
 
@@ -52,6 +92,26 @@ export default function SoundtrackPage() {
         ))}
       </div>
       <div className={styles.rightColumn}>
+        <div className={styles.scrollArrows}>
+          <button
+            type="button"
+            className={styles.scrollArrow}
+            onClick={() => scrollToSection(currentIndex - 1)}
+            disabled={currentIndex === 0}
+            aria-label="Previous section"
+          >
+            <ChevronUpIcon />
+          </button>
+          <button
+            type="button"
+            className={styles.scrollArrow}
+            onClick={() => scrollToSection(currentIndex + 1)}
+            disabled={currentIndex === SECTIONS.length - 1}
+            aria-label="Next section"
+          >
+            <ChevronDownIcon />
+          </button>
+        </div>
         <div className={styles.stickyContent}>
           <RightContent />
         </div>

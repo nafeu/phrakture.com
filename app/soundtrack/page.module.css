@@ -21,24 +21,77 @@
 .leftColumn {
   overflow-y: auto;
   padding: 2.5rem;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-padding: 2.5rem;
 }
 
 .rightColumn {
   background-color: var(--st-black);
+  position: relative;
+}
+
+.scrollArrows {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.scrollArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--st-bg-secondary);
+  color: var(--st-text);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.scrollArrow:hover:not(:disabled) {
+  background-color: var(--st-accent-1);
+  color: var(--st-bg);
+}
+
+.scrollArrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.scrollArrow svg {
+  width: 14px;
+  height: 14px;
 }
 
 .stickyContent {
   position: sticky;
   top: 0;
   height: 100vh;
-  padding: 2.5rem;
+  padding: 2.5rem 4rem 2.5rem 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .section {
-  padding-bottom: var(--default-spacing, 20px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  box-sizing: border-box;
 }
 
 .section h2 {
