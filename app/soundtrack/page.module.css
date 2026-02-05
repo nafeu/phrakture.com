@@ -181,8 +181,9 @@
 }
 
 .section :global(.genreList) {
+  font-size: 1.25rem;
   list-style: none;
-  padding-left: 0;
+  padding-left: 1.5rem;
 }
 
 .section :global(.genreList) li::before {
@@ -191,7 +192,10 @@
   font-weight: bold;
   display: inline-block;
   width: 1em;
-  margin-left: -1em;
+}
+
+.section :global(.genreList) li {
+  font-size: 1.5rem;
 }
 
 .section :global(.commitments) li {
