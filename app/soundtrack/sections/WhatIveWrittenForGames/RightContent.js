@@ -6,7 +6,10 @@ export default function WhatIveWrittenForGamesRightContent() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%'
+        height: '100%',
+        padding: '2rem 0',
+        gap: '1.5rem',
+        overflowY: 'auto',
       }}
     >
       <iframe
@@ -19,11 +22,13 @@ export default function WhatIveWrittenForGamesRightContent() {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
         style={{
-          maxWidth: '90%',
-          maxHeight: '80vh',
+          maxWidth: '100%',
+          width: '560px',
+          aspectRatio: '16/9',
+          maxHeight: '30vh',
           borderRadius: '1.25rem',
           boxShadow: '0 6px 36px rgba(0,0,0,0.3)',
-          marginBottom: '2rem',
+          flexShrink: 1,
         }}
       ></iframe>
       <iframe
@@ -36,10 +41,13 @@ export default function WhatIveWrittenForGamesRightContent() {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
         style={{
-          maxWidth: '90%',
-          maxHeight: '80vh',
+          maxWidth: '100%',
+          width: '560px',
+          aspectRatio: '16/9',
+          maxHeight: '30vh',
           borderRadius: '1.25rem',
           boxShadow: '0 6px 36px rgba(0,0,0,0.3)',
+          flexShrink: 1,
         }}
       ></iframe>
     </div>

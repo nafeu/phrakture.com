@@ -38,6 +38,13 @@ export default function SoundtrackPage() {
   }, []);
 
   useEffect(() => {
+    const firstSection = sectionRefs.current[SECTIONS[0].id];
+    if (firstSection) {
+      firstSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+  }, []);
+
+  useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
@@ -81,7 +88,7 @@ export default function SoundtrackPage() {
     <div className={styles.themeWrapper}>
     <header className={styles.header}>
       <div className={styles.headerTagline}>
-        Nafeu Nasir · Phrakture — Custom soundtrack for indie games
+        Nafeu Nasir · Phrakture / Custom Soundtrack For Indie Games
       </div>
       <div className={styles.headerLinks}>
         <a href="https://phrakture.bandcamp.com/" target="_blank" rel="noopener noreferrer" aria-label="Bandcamp">
