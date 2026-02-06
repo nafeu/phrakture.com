@@ -15,7 +15,9 @@ export default function PricingPackagesRightContent() {
           margin: 0,
         }}
       >
-        <em>"How are you able to work for free? What&apos;s the catch?"</em>
+        <em>
+          &quot;How are you able to work for free? What&apos;s the catch?&quot;
+        </em>
       </h3>
       <p
         style={{

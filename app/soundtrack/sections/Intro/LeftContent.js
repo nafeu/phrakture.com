@@ -35,11 +35,12 @@ export default function IntroLeftContent() {
           </li>
         </ul>
         <p style={{ fontSize: '1rem' }}>
-          I've also done a popular VGM remix of Unreal Tournament's "Foregone
-          Destruction" through the OCRemix community and I've got an expansive
-          portfolio of commercial releases on Beatport and Spotify under the
-          artist name <em>Phrakture</em>, with support from DJs like Jaytech,
-          Solarstone, Matt Darey, Andy Moor, and more.
+          I&apos;ve also done a popular VGM remix of Unreal Tournament&apos;s
+          &quot;Foregone Destruction&quot; through the OCRemix community and
+          I&apos;ve got an expansive portfolio of commercial releases on
+          Beatport and Spotify under the artist name <em>Phrakture</em>, with
+          support from DJs like Jaytech, Solarstone, Matt Darey, Andy Moor, and
+          more.
         </p>
       </div>
     </>

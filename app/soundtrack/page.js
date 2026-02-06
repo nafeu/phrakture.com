@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { BandcampIcon, SpotifyIcon, YoutubeIcon } from '../components/Icons';
-import { SECTIONS } from './sections';
+
 import styles from './page.module.css';
+import { SECTIONS } from './sections';
 
 function ChevronUpIcon() {
   return (
