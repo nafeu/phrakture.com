@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { BandcampIcon, SpotifyIcon, YoutubeIcon } from '../components/Icons';
 import { SECTIONS } from './sections';
 import styles from './page.module.css';
 
@@ -78,6 +79,25 @@ export default function SoundtrackPage() {
 
   return (
     <div className={styles.themeWrapper}>
+    <header className={styles.header}>
+      <div className={styles.headerTagline}>
+        Nafeu Nasir · Phrakture — Custom soundtrack for indie games
+      </div>
+      <div className={styles.headerLinks}>
+        <a href="https://phrakture.bandcamp.com/" target="_blank" rel="noopener noreferrer" aria-label="Bandcamp">
+          <BandcampIcon />
+        </a>
+        <a href="https://youtube.com/phrakture" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <YoutubeIcon />
+        </a>
+        <a href="https://open.spotify.com/artist/4AlnXoFGT5zl3v85ScIOzK" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <SpotifyIcon />
+        </a>
+        <a href="mailto:phrakturemusic@proton.me" className={styles.headerEmail}>
+          phrakturemusic@proton.me
+        </a>
+      </div>
+    </header>
     <div className={styles.layout}>
       <div ref={containerRef} className={styles.leftColumn}>
         {SECTIONS.map(({ id, LeftContent }) => (

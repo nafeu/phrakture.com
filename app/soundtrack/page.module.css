@@ -5,16 +5,69 @@
   --st-accent-1: #e5446d;
   --st-accent-2: #ff8966;
   --st-black: black;
+  --st-header-height: 3rem;
 
   background-color: var(--st-bg);
   color: var(--st-text);
   min-height: 100vh;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.75rem 2rem;
+  font-size: 0.8rem;
+  background-color: var(--st-bg);
+  border-bottom: 1px solid rgba(248, 244, 227, 0.12);
+}
+
+.headerTagline {
+  color: var(--st-text);
+  opacity: 0.9;
+}
+
+.headerLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.headerLinks a {
+  color: var(--st-text);
+  opacity: 0.8;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.headerLinks a:hover {
+  opacity: 1;
+  color: var(--st-accent-2);
+}
+
+.headerLinks svg {
+  width: 18px;
+  height: 18px;
+}
+
+.headerEmail {
+  font-size: 0.75rem !important;
+  margin-left: 0.5rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(248, 244, 227, 0.2);
+}
+
 .layout {
+  padding-top: var(--st-header-height);
+  height: 100vh;
   display: grid;
   grid-template-columns: 60% 40%;
-  height: 100vh;
   overflow: hidden;
 }
 
