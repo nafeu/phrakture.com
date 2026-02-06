@@ -202,6 +202,10 @@
   margin-bottom: 0.75rem;
 }
 
+.section :global(.pricingTable) {
+  margin-top: 1rem;
+}
+
 .stickyContent h2 {
   font-size: var(--header-font-size, 2rem);
   margin-bottom: var(--default-spacing, 10px);

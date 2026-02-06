@@ -20,7 +20,7 @@ export default function IntroLeftContent() {
             >
               Lorn&apos;s Lure
             </a>{' '}
-            (83% Positive with 2000+ reviews)
+            (Very Positive with 2000+ reviews)
           </li>
           <li>
             <a
@@ -30,7 +30,7 @@ export default function IntroLeftContent() {
             >
               Primordialis
             </a>{' '}
-            (87% Positive with 700+ reviews in Early Access)
+            (Very Positive with 700+ reviews in Early Access)
           </li>
         </ul>
         <p style={{ fontSize: '1rem' }}>I've also done a popular VGM remix of Unreal Tournament's "Foregone Destruction" through the OCRemix community and I've got an expansive portfolio of commercial releases on Beatport and Spotify under the artist name <em>Phrakture</em>, with support from DJs like Jaytech, Solarstone, Matt Darey, Andy Moor, and more.</p>
