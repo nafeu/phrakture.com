@@ -6,8 +6,8 @@ import HowIWorkLeftContent from './HowIWork/LeftContent';
 import HowIWorkRightContent from './HowIWork/RightContent';
 import PricingPackagesLeftContent from './PricingPackages/LeftContent';
 import PricingPackagesRightContent from './PricingPackages/RightContent';
-import WhatImCommittedToLeftContent from './WhatImCommittedTo/LeftContent';
-import WhatImCommittedToRightContent from './WhatImCommittedTo/RightContent';
+import GetInTouchLeftContent from './GetInTouch/LeftContent';
+import GetInTouchRightContent from './GetInTouch/RightContent';
 
 export const SECTIONS = [
   { id: 'intro', LeftContent: IntroLeftContent, RightContent: IntroRightContent },
@@ -27,8 +27,8 @@ export const SECTIONS = [
     RightContent: PricingPackagesRightContent,
   },
   {
-    id: 'commitments',
-    LeftContent: WhatImCommittedToLeftContent,
-    RightContent: WhatImCommittedToRightContent,
+    id: 'get-in-touch',
+    LeftContent: GetInTouchLeftContent,
+    RightContent: GetInTouchRightContent,
   },
 ];
