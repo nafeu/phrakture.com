@@ -1,4 +1,4 @@
-@import url("https://use.typekit.net/boj5krl.css");
+@import url('https://use.typekit.net/boj5krl.css');
 
 :root {
   --font: t26-carbon, monospace;
@@ -14,11 +14,11 @@
 
   --header-font-size: 2rem;
 
-  --theme-cse-black: #2A2B2A;
-  --theme-cse-red: #F4442E;
-  --theme-cse-white: #F8F4E3;
-  --theme-cse-blue: #5CC8FF;
-  --theme-cse-purple: #7D70BA;
+  --theme-cse-black: #2a2b2a;
+  --theme-cse-red: #f4442e;
+  --theme-cse-white: #f8f4e3;
+  --theme-cse-blue: #5cc8ff;
+  --theme-cse-purple: #7d70ba;
 }
 
 * {

@@ -4,8 +4,8 @@ export default function HowIWorkLeftContent() {
       <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>How I work</h2>
       <ol style={{ fontSize: '1.25rem', paddingInline: '1.5rem' }}>
         <li style={{ marginBottom: '1.25rem' }}>
-          I provide a two week (10 business day) trial period for any development
-          team who wants to see what it is like working with me.
+          I provide a two week (10 business day) trial period for any
+          development team who wants to see what it is like working with me.
         </li>
         <li style={{ marginBottom: '1.25rem' }}>
           During this period, I set up a private collaboration board and we work

@@ -1,4 +1,12 @@
-const iconStyle = { width: 22, height: 22, stroke: 'currentColor', strokeWidth: 2, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' };
+const iconStyle = {
+  width: 22,
+  height: 22,
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  fill: 'none',
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+};
 
 const CalendarIcon = () => (
   <svg viewBox="0 0 24 24" style={iconStyle} aria-hidden>
@@ -83,8 +91,12 @@ export default function HowIWorkRightContent() {
             gap: '1rem',
             padding: '0.65rem 1rem',
             borderRadius: 8,
-            background: highlight ? 'rgba(229, 68, 109, 0.15)' : 'rgba(112, 108, 97, 0.25)',
-            borderLeft: highlight ? '3px solid var(--st-accent-1)' : '3px solid transparent',
+            background: highlight
+              ? 'rgba(229, 68, 109, 0.15)'
+              : 'rgba(112, 108, 97, 0.25)',
+            borderLeft: highlight
+              ? '3px solid var(--st-accent-1)'
+              : '3px solid transparent',
           }}
         >
           <div

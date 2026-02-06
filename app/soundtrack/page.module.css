@@ -107,7 +107,10 @@
   background-color: var(--st-bg-secondary);
   color: var(--st-text);
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    opacity 0.2s;
 }
 
 .scrollArrow:hover:not(:disabled) {

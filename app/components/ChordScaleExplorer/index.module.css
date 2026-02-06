@@ -6,24 +6,24 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .chordsList::-webkit-scrollbar {
-  display: none;  /* Safari and Chrome */
+  display: none; /* Safari and Chrome */
 }
 
 .scalesList {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .scalesList::-webkit-scrollbar {
-  display: none;  /* Safari and Chrome */
+  display: none; /* Safari and Chrome */
 }
 
 .piano {
@@ -85,7 +85,7 @@
 }
 
 .rootNote::before {
-  content: "";
+  content: '';
   width: 10px;
   height: 2px;
   background-color: var(--theme-cse-white);
@@ -99,7 +99,7 @@
 }
 
 .selected::after {
-  content: "";
+  content: '';
   width: 10px;
   height: 10px;
   border-radius: 5px;
@@ -127,7 +127,8 @@
   gap: 5px;
 }
 
-.chordChart, .scaleChart {
+.chordChart,
+.scaleChart {
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -173,11 +174,13 @@
   gap: 10px;
 }
 
-.volumeIcon, .downloadIcon {
+.volumeIcon,
+.downloadIcon {
   cursor: pointer;
 }
 
-.volumeIcon:active, .downloadIcon:active {
+.volumeIcon:active,
+.downloadIcon:active {
   fill: var(--theme-cse-red);
 }
 
@@ -189,7 +192,8 @@
   fill: var(--theme-cse-blue);
 }
 
-.tagSelector, .rootSelector {
+.tagSelector,
+.rootSelector {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -349,7 +353,7 @@
 }
 
 .tagsFilter:focus {
-  opacity: 1.0;
+  opacity: 1;
   color: var(--theme-cse-white);
 }
 
@@ -393,7 +397,8 @@
   align-items: center;
 }
 
-.midiExportOptionLength > input, .midiExportOptionTempo > input {
+.midiExportOptionLength > input,
+.midiExportOptionTempo > input {
   border: none;
   background-color: var(--theme-cse-red);
   color: var(--theme-cse-black);
@@ -443,17 +448,16 @@
 }
 
 .midiExportSequenceOption:hover {
-  opacity: 1.0;
+  opacity: 1;
 }
 
 .midiExportMeasurementLabel {
-
 }
 
 .midiExportSequenceSelected {
   background-color: var(--theme-cse-red);
   color: var(--theme-cse-black);
-  opacity: 1.0;
+  opacity: 1;
 }
 
 .supportLinks {

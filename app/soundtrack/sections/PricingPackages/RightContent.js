@@ -26,10 +26,10 @@ export default function PricingPackagesRightContent() {
           opacity: 0.95,
         }}
       >
-        I don&apos;t work for free on every project. I only accept projects with the
-        &quot;indie package&quot; when I believe the game has a strong chance of commercial
-        success and that soundtrack sales can reasonably replace my standard rate
-        (typically around $150 per finished minute).
+        I don&apos;t work for free on every project. I only accept projects with
+        the &quot;indie package&quot; when I believe the game has a strong
+        chance of commercial success and that soundtrack sales can reasonably
+        replace my standard rate (typically around $150 per finished minute).
       </p>
       <p
         style={{
@@ -41,9 +41,9 @@ export default function PricingPackagesRightContent() {
         }}
       >
         In these cases, I earn my income from selling the game&apos;s soundtrack
-        instead of charging the development team directly. Historically, this has
-        worked well for me. Soundtrack sales have often exceeded what I would have
-        earned through a flat fee.
+        instead of charging the development team directly. Historically, this
+        has worked well for me. Soundtrack sales have often exceeded what I
+        would have earned through a flat fee.
       </p>
       <p
         style={{
@@ -54,8 +54,8 @@ export default function PricingPackagesRightContent() {
           opacity: 0.95,
         }}
       >
-        The trade-off is simple: the developer doesn&apos;t earn revenue from the
-        soundtrack, but also doesn&apos;t need to make any upfront financial
+        The trade-off is simple: the developer doesn&apos;t earn revenue from
+        the soundtrack, but also doesn&apos;t need to make any upfront financial
         investment in music. This can be especially helpful for indie teams
         looking to reduce early production costs while still getting a fully
         produced, release-ready soundtrack.

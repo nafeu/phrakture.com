@@ -10,7 +10,11 @@ import GetInTouchLeftContent from './GetInTouch/LeftContent';
 import GetInTouchRightContent from './GetInTouch/RightContent';
 
 export const SECTIONS = [
-  { id: 'intro', LeftContent: IntroLeftContent, RightContent: IntroRightContent },
+  {
+    id: 'intro',
+    LeftContent: IntroLeftContent,
+    RightContent: IntroRightContent,
+  },
   {
     id: 'what-ive-written',
     LeftContent: WhatIveWrittenForGamesLeftContent,

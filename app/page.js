@@ -98,10 +98,7 @@ export default function Home() {
             <a className={styles.link} href="https://youtube.com/phrakture">
               <YoutubeIcon /> youtube
             </a>
-            <a
-              className={styles.link}
-              href="https://x.com/phrakturemusic"
-            >
+            <a className={styles.link} href="https://x.com/phrakturemusic">
               <XIcon /> twitter
             </a>
             <a className={styles.link} href="https://instagram.com/phrakture">

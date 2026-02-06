@@ -27,9 +27,7 @@ export default function PricingPackagesLeftContent() {
                   background: 'rgba(112, 108, 97, 0.2)',
                   borderBottom: '2px solid rgba(248, 244, 227, 0.15)',
                 }}
-              >
-               
-              </th>
+              ></th>
               <th
                 style={{
                   padding: '1rem 1.25rem',
@@ -114,7 +112,10 @@ export default function PricingPackagesLeftContent() {
                   verticalAlign: 'top',
                 }}
               >
-                <strong style={{ color: 'var(--st-accent-2)' }}>$150 USD</strong> per minute
+                <strong style={{ color: 'var(--st-accent-2)' }}>
+                  $150 USD
+                </strong>{' '}
+                per minute
                 <br />
                 <span style={{ fontSize: '0.9rem', opacity: 0.9 }}>
                   ($9,000 for 1 hour of finished audio)
@@ -187,9 +188,10 @@ export default function PricingPackagesLeftContent() {
                   background: 'rgba(255, 137, 102, 0.06)',
                 }}
               >
-                I retain rights to sell &amp; distribute (Steam, Bandcamp, Spotify, etc.).
-                Contract specifies IP preservation before commercial release (you sign off
-                on final versions shipped to stores.)
+                I retain rights to sell &amp; distribute (Steam, Bandcamp,
+                Spotify, etc.). Contract specifies IP preservation before
+                commercial release (you sign off on final versions shipped to
+                stores.)
               </td>
               <td
                 style={{
@@ -202,7 +204,8 @@ export default function PricingPackagesLeftContent() {
                   verticalAlign: 'top',
                 }}
               >
-                You retain rights to sell and distribute with agreements on credit attribution.
+                You retain rights to sell and distribute with agreements on
+                credit attribution.
               </td>
             </tr>
             <tr>

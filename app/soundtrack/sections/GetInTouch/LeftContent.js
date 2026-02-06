@@ -2,11 +2,14 @@ export default function GetInTouchLeftContent() {
   return (
     <>
       <h2 style={{ fontSize: '3rem' }}>Get in touch</h2>
-      <p style={{ fontSize: '1.5rem' }}>You can reach me in one of the following ways:</p>
+      <p style={{ fontSize: '1.5rem' }}>
+        You can reach me in one of the following ways:
+      </p>
 
       <h3>Email</h3>
       <p style={{ fontSize: '1.5rem' }}>
-        📧 <a href="mailto:phrakturemusic@proton.me">phrakturemusic@proton.me</a>
+        📧{' '}
+        <a href="mailto:phrakturemusic@proton.me">phrakturemusic@proton.me</a>
       </p>
 
       <h3>Discord</h3>

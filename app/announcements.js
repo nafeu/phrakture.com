@@ -9,9 +9,11 @@ export const announcements = [
     alt: 'Primordialis Soundtrack Cover',
     description: (
       <Fragment>
-        The full OST for Primordialis is now available on all platforms!{' '}
-        You can stream it <a href="https://www.youtube.com/watch?v=m4I9uIV1HvU">here.</a>{' '}
-        We have also put the game and soundtrack together in a discounted bundle on Steam.{' '}
+        The full OST for Primordialis is now available on all platforms! You can
+        stream it{' '}
+        <a href="https://www.youtube.com/watch?v=m4I9uIV1HvU">here.</a> We have
+        also put the game and soundtrack together in a discounted bundle on
+        Steam.{' '}
       </Fragment>
     ),
     url: 'https://store.steampowered.com/bundle/64662/Primordialis__Soundtrack/',

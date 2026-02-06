@@ -167,9 +167,7 @@
   flex-direction: row-reverse;
 }
 
-
 .blockImageContainer {
-
 }
 
 .blockImage {
@@ -177,7 +175,6 @@
 }
 
 .blockText {
-
 }
 
 .blockText a {
@@ -207,7 +204,6 @@
 
 .blockDescription {
   padding-bottom: calc(var(--default-spacing));
-
 }
 
 .blockCta {
